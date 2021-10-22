@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_quarter">4dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_half_quarter">12dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_default_half">24dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+    <dimen name="margin_double_half">40dp</dimen>
+    <dimen name="margin_triple">48dp</dimen>
+    <dimen name="margin_quadruple">64dp</dimen>
+
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
+    <dimen name="smaller_text_size">12sp</dimen>
+    <dimen name="tiny_text_size">11sp</dimen>
+
+    <dimen name="title_size">24sp</dimen>
+    <dimen name="subtitle_size">18sp</dimen>
+    <dimen name="small_title_size">20sp</dimen>
+    <dimen name="user_name_size">18sp</dimen>
+
+    <dimen name="watch_card_elevation">3dp</dimen>
+    <dimen name="watch_card_img_width">100dp</dimen>
+    <dimen name="watch_card_img_height">160dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="button_icon_size">48dp</dimen>
+
+    <dimen name="logo_width">200dp</dimen>
+    <dimen name="logo_height">200dp</dimen>
+
+    <dimen name="border_profile_image">2dp</dimen>
+    <dimen name="image_profile_width">128dp</dimen>
+    <dimen name="image_profile_height">128dp</dimen>
+
+    <dimen name="custom_margin_top_background_detail">45dp</dimen>
+    <dimen name="image_background_detail_height">230dp</dimen>
+</resources>
