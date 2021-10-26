@@ -40,4 +40,10 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+    fun getNowPlaying() {
+        viewModelScope.launch {
+            homeUseCase.getNowPlaying()
+        }
+    }
 }

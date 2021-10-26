@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
             viewModel = ViewModelProvider(it)[HomeViewModel::class.java]
 
             viewModel.getPopular()
+            viewModel.getNowPlaying()
 
             setupObservables()
         }

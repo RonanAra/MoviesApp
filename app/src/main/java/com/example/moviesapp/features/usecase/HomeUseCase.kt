@@ -24,4 +24,8 @@ class HomeUseCase {
             }
         }
     }
+
+    suspend fun getNowPlaying() {
+        homeRepository.getNowPlaying()
+    }
 }
