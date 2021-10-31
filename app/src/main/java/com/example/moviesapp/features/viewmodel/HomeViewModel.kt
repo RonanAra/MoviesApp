@@ -1,15 +1,17 @@
 package com.example.moviesapp.features.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.moviesapp.base.BaseViewModel
 import com.example.moviesapp.features.usecase.HomeUseCase
 import com.example.moviesapp.model.Result
 import com.example.moviesapp.utils.ResponseApi
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     private val homeUseCase = HomeUseCase()
 
@@ -26,24 +28,16 @@ class HomeViewModel : ViewModel() {
 
     fun getPopular() {
         viewModelScope.launch {
-            when (val responseApi = homeUseCase.getPopular()) {
-                is ResponseApi.Success -> {
-                    val result = responseApi.data as List<*>
+            callApi(
+                suspend { homeUseCase.getPopular() },
+                onSuccess = {
+                    val result = it as? List<*>
                     _onSuccesPopular.postValue(
-                        result.filterIsInstance<Result>()
+                        result?.filterIsInstance<Result>()
                     )
-
                 }
-                is ResponseApi.Error -> {
-                    _onErrorPopular.postValue(responseApi.message)
-                }
-            }
-        }
-    }
-
-    fun getNowPlaying() {
-        viewModelScope.launch {
-            homeUseCase.getNowPlaying()
+            )
         }
     }
 }
+

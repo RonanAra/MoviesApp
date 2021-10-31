@@ -37,8 +37,6 @@ class PopularAdapter(
             with(binding) {
 
                 tvitle.text = movies.title
-                tvPopularity.text = movies.popularity.toString()
-
 
                 Glide
                     .with(itemView.context)

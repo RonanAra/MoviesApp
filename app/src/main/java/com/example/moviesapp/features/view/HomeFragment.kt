@@ -5,16 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapp.adpter.PopularAdapter
 import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.features.viewmodel.HomeViewModel
+import com.example.moviesapp.utils.Command
 
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
     private lateinit var viewModel: HomeViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,14 +39,16 @@ class HomeFragment : Fragment() {
 
         activity?.let {
             viewModel = ViewModelProvider(it)[HomeViewModel::class.java]
+            viewModel.command = command
 
             viewModel.getPopular()
-            viewModel.getNowPlaying()
-
             setupObservables()
+
+
         }
 
     }
+
 
     private fun setupObservables() {
         activity?.let {
@@ -51,11 +57,10 @@ class HomeFragment : Fragment() {
                     val popularAdapter = PopularAdapter(
                         listaMovies = it
                     )
-
                     binding?.let {
                         with(it) {
                             rvHomePopular.apply {
-                                layoutManager = LinearLayoutManager(context)
+                                layoutManager = GridLayoutManager(context,2)
                                 adapter = popularAdapter
 
                             }
@@ -65,12 +70,20 @@ class HomeFragment : Fragment() {
                 }
             })
         }
+
+
+        viewModel.onErrorPopular.observe(viewLifecycleOwner, {
+            it
+        })
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
-        binding = null
-    }
+
+override fun onDestroy() {
+    super.onDestroy()
+    binding = null
+}
+
+var command: MutableLiveData<Command> = MutableLiveData()
 
 }

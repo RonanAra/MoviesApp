@@ -3,53 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mvCard"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:elevation="5dp"
+    android:layout_margin="8dp"
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="160dp"
+        android:layout_height="320dp"
+        >
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivImage"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_margin="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            app:circularflow_radiusInDP="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivImage"
+            app:layout_constraintTop_toBottomOf="@id/tvitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvitle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivImage"
             tools:text="Title" />
 
-        <ImageButton
-            android:id="@+id/btFavoriteMovie"
-            style="@style/ButtonIcon"
-            android:layout_width="@dimen/button_icon_size"
-            android:layout_height="@dimen/button_icon_size"
-            android:src="@drawable/ic_favorite_border_24px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tvPopularity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/btFavoriteMovie"
-            app:layout_constraintEnd_toStartOf="@id/ivImage"
-            app:layout_constraintBottom_toBottomOf="parent"
-
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

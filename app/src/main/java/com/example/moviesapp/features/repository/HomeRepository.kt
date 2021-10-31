@@ -12,10 +12,4 @@ class HomeRepository: BaseRepository() {
             MoviesService.tmdbApi.getPopularMovies()
         }
     }
-
-    suspend fun getNowPlaying(): ResponseApi {
-        return safeApiCall {
-            MoviesService.tmdbApi.getNowPlayingMovies()
-        }
-    }
 }

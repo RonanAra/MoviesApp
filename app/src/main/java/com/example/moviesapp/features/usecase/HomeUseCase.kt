@@ -11,7 +11,7 @@ class HomeUseCase {
 
     suspend fun getPopular(): ResponseApi {
         return when (val responseApi = homeRepository.getPopular()) {
-                is ResponseApi.Success -> {
+            is ResponseApi.Success -> {
                 var data = responseApi.data as? Popular
                 val result = data?.results?.map {
                     it.poster_path = it.poster_path?.getFullImageUrl()
@@ -20,12 +20,11 @@ class HomeUseCase {
                 ResponseApi.Success(result)
             }
             is ResponseApi.Error -> {
-                responseApi
+            responseApi
             }
         }
-    }
 
-    suspend fun getNowPlaying() {
-        homeRepository.getNowPlaying()
     }
 }
+
+
