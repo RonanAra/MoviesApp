@@ -1,7 +1,8 @@
-package com.example.moviesapp.api
+package com.example.moviesapp.data.retrofit
 
 
 import androidx.viewbinding.BuildConfig
+import com.example.moviesapp.data.api.TmdbApi
 import com.example.moviesapp.utils.ConstantsApp.Api.API_TOKEN
 import com.example.moviesapp.utils.ConstantsApp.Api.API_TOKEN_KEY
 import com.example.moviesapp.utils.ConstantsApp.Api.BASE_URL

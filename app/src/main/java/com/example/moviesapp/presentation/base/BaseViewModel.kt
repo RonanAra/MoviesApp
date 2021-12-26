@@ -1,16 +1,15 @@
-package com.example.moviesapp.base
+package com.example.moviesapp.presentation.base
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.moviesapp.utils.Command
 import com.example.moviesapp.utils.ResponseApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 open class BaseViewModel(
-    application: Application
-) : AndroidViewModel(application) {
+
+) : ViewModel() {
 
     lateinit var command: MutableLiveData<Command>
 

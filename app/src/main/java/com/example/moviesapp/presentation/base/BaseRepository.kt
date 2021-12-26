@@ -1,4 +1,4 @@
-package com.example.moviesapp.base
+package com.example.moviesapp.presentation.base
 
 import com.example.moviesapp.utils.ResponseApi
 import retrofit2.Response

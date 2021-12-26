@@ -1,9 +1,9 @@
-package com.example.moviesapp.features
+package com.example.moviesapp.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviesapp.R
-import com.example.moviesapp.features.view.HomeFragment
+import com.example.moviesapp.presentation.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

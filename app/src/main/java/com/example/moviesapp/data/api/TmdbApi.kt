@@ -1,7 +1,7 @@
-package com.example.moviesapp.api
+package com.example.moviesapp.data.api
 
 
-import com.example.moviesapp.model.Popular
+import com.example.moviesapp.data.model.Popular
 import retrofit2.Response
 import retrofit2.http.*
 
