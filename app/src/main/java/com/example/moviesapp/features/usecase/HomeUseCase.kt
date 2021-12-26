@@ -1,7 +1,7 @@
 package com.example.moviesapp.features.usecase
 
 import com.example.moviesapp.extensions.getFullImageUrl
-import com.example.moviesapp.features.repository.HomeRepository
+import com.example.moviesapp.api.HomeRepository
 import com.example.moviesapp.model.Popular
 import com.example.moviesapp.utils.ResponseApi
 

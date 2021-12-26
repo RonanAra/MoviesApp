@@ -1,6 +1,5 @@
-package com.example.moviesapp.features.repository
+package com.example.moviesapp.api
 
-import com.example.moviesapp.api.MoviesService
 import com.example.moviesapp.base.BaseRepository
 import com.example.moviesapp.utils.ResponseApi
 

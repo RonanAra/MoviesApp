@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.moviesapp.adpter.PopularAdapter
 import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.features.viewmodel.HomeViewModel
 import com.example.moviesapp.utils.Command
