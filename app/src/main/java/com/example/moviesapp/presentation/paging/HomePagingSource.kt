@@ -21,7 +21,7 @@ class HomePagingSource(
 
         return try {
             val page: Int = params.key ?: 1
-            val response = callPopularApi()
+            val response = callPopularApi(page)
 
             LoadResult.Page(
                 data = response,
@@ -34,9 +34,9 @@ class HomePagingSource(
         }
     }
 
-    private suspend fun callPopularApi(): List<Result> {
+    private suspend fun callPopularApi(page: Int): List<Result> {
         return when (
-            val response = homeRepository.getPopular()
+            val response = homeRepository.getPopular(page)
         ) {
             is ResponseApi.Success -> {
                 val list = response.data as? Popular
