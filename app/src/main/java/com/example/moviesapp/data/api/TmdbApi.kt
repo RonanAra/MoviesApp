@@ -12,5 +12,9 @@ interface TmdbApi {
         @Query("page") page: Int
     ): Response<Popular>
 
+    @GET("movie/{movie_id}")
+    suspend fun getMovieById(
+        @Path("movie_id") movieId: Int
+    ): Response<Popular>
 
 }

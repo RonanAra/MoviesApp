@@ -1,14 +1,14 @@
-package com.example.moviesapp.presentation.viewmodel
+package com.example.moviesapp.presentation.home.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.moviesapp.domain.homerepository.HomeRepository
+import com.example.moviesapp.domain.repository.HomeRepository
 import com.example.moviesapp.presentation.base.BaseViewModel
-import com.example.moviesapp.presentation.paging.HomePagingSource
-import com.example.moviesapp.domain.homeusecase.HomeUseCase
+import com.example.moviesapp.presentation.home.paging.HomePagingSource
+import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.data.model.Result
 import kotlinx.coroutines.flow.Flow
 

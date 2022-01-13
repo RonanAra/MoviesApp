@@ -1,29 +1,37 @@
-package com.example.moviesapp.presentation.fragments
+package com.example.moviesapp.presentation.home.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.moviesapp.R
 import com.example.moviesapp.databinding.FragmentHomeBinding
-import com.example.moviesapp.presentation.adapter.PopularAdapter
-import com.example.moviesapp.presentation.base.BaseFragment
-import com.example.moviesapp.presentation.viewmodel.HomeViewModel
-import com.example.moviesapp.utils.Command
+import com.example.moviesapp.presentation.home.adapter.PopularAdapter
+import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
+import com.example.moviesapp.utils.ConstantsApp.Api.KEY_BUNDLE_ID
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.component.getScopeName
 
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
     private val viewModel: HomeViewModel by viewModel()
 
-    private val popularAdapter = PopularAdapter()
+    private val popularAdapter: PopularAdapter by lazy {
+        PopularAdapter { movies ->
+            val bundle = Bundle()
+            bundle.putInt(KEY_BUNDLE_ID, movies.id)
+            findNavController().navigate(
+                R.id.action_homeFragment_to_detailsFragment,
+                bundle
+            )
+        }
+    }
 
 
     override fun onCreateView(
@@ -48,6 +56,7 @@ class HomeFragment : Fragment() {
         binding?.rvHomePopular?.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = popularAdapter
+
         }
     }
 

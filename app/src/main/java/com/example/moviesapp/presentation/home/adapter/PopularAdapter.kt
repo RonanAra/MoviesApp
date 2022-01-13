@@ -1,4 +1,4 @@
-package com.example.moviesapp.presentation.adapter
+package com.example.moviesapp.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.example.moviesapp.data.model.Result
 
 
 class PopularAdapter(
-
+    private val onClickListener: (movies: Result) -> Unit
 ) : PagingDataAdapter<Result, PopularAdapter.ViewHolder>(Result.DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,7 +23,8 @@ class PopularAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onClickListener)
+
     }
 
 
@@ -31,20 +32,26 @@ class PopularAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(movies: Result?) {
+        fun bind(movies: Result?, onClickListener: (movies: Result) -> Unit) {
             with(binding) {
-
-                tvitle.text = movies?.title
+                movies?.let {
+                    tvitle.text = movies?.title
+                    mvCard.setOnClickListener {
+                        onClickListener(movies)
+                    }
+                }
 
                 Glide
                     .with(itemView.context)
                     .load(movies?.poster_path)
                     .into(ivImage)
 
-                }
+
             }
         }
     }
+}
+
 
 
 

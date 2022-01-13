@@ -1,10 +1,9 @@
-package com.example.moviesapp.domain.homeusecase
+package com.example.moviesapp.domain.usecase
 
 import com.example.moviesapp.extensions.getFullImageUrl
-import com.example.moviesapp.domain.homerepository.HomeRepository
+import com.example.moviesapp.domain.repository.HomeRepository
 import com.example.moviesapp.data.model.Popular
 import com.example.moviesapp.data.model.Result
-import com.example.moviesapp.utils.ResponseApi
 
 class HomeUseCase
     constructor(

@@ -9,6 +9,7 @@ class ConstantsApp {
         const val QUERY_PARAM_LANGUAGE_KEY = "language"
         const val QUERY_PARAM_LANGUAGE_VALUE = "pt-BR"
         const val BASE_URL = "https://api.themoviedb.org/3/"
+        const val KEY_BUNDLE_ID = "movieId"
 
     }
 }
