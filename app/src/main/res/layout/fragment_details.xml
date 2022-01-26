@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/LayoutStyle"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.moviedetails.view.DetailsFragment">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivDetailsImage"
         android:layout_width="0dp"
         android:layout_height="250dp"
-        android:layout_margin="16dp"
-        app:layout_constraintVertical_bias="0.3"
-        android:src="@drawable/ic_launcher_background"
+        android:layout_margin="12dp"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,14 +23,33 @@
         android:id="@+id/tvTitleDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
         android:textSize="24sp"
-        android:layout_margin="12dp"
+        style="@style/TextStyle"
+        android:text="Title"
         app:layout_constraintStart_toStartOf="@id/ivDetailsImage"
         app:layout_constraintEnd_toEndOf="@id/ivDetailsImage"
         app:layout_constraintTop_toBottomOf="@id/ivDetailsImage"
         />
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/rubik_light"
+        android:gravity="fill|fill_horizontal"
+        android:justificationMode="inter_word"
+        android:textSize="14sp"
+        style="@style/TextStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." />
 
 
 

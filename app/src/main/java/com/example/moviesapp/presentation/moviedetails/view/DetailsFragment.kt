@@ -46,7 +46,21 @@ class DetailsFragment : Fragment() {
 
     private fun setupObservables() {
         viewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
-            it
+            it?.let { result ->
+                binding?.let { binding ->
+                    activity?.let { activity ->
+                        Glide
+                            .with(activity)
+                            .load(result.backdrop_path)
+                            .error(R.drawable.place_holder)
+                            .into(binding.ivDetailsImage)
+
+                    }
+                }
+                binding?.tvTitleDetails?.text = result.title
+                binding?.tvOverview?.text = result.overview
+
+            }
         })
 
     }

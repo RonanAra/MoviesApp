@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkBlue">#202BFF</color>
     <color name="lightBlue">#03A9F4</color>
+    <color name="lighter_gray">#F2F2F2</color>
+    <color name="secondary_blue">#0C3559</color>
+    <!-- Text Color -->
+    <color name="textColor">#f1f1f1</color>
+    <color name="primaryColor">#0b0b0b</color>
+
 </resources>
