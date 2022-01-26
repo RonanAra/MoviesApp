@@ -7,33 +7,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.home.view.HomeFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
+
+
+    <ImageButton
+        android:id="@+id/ib_search"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/button_search"
-        app:iconifiedByDefault="false"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/title_menu_home_search"
+        android:padding="16dp"
+        android:src="@drawable/ic_search"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/ib_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/title_menu_home_search"
+        android:padding="16dp"
+        android:src="@drawable/ic_favorite_border_24px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rvHomePopular"
-        app:queryHint="Digite o nome do filme" />
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHomePopular"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toBottomOf="@id/ib_search"
         app:layout_constraintVertical_bias="1.0" />
 
 

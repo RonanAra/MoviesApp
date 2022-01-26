@@ -13,6 +13,8 @@
     <color name="secondary_blue">#0C3559</color>
     <!-- Text Color -->
     <color name="textColor">#f1f1f1</color>
+    <color name="TertiaryColor">#3B3B3B</color>
     <color name="primaryColor">#0b0b0b</color>
+    <color name="TertiaryLightColor">#929292</color>
 
 </resources>

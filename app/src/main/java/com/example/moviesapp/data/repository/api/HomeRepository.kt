@@ -1,4 +1,4 @@
-package com.example.moviesapp.domain.repository
+package com.example.moviesapp.data.repository.api
 
 import com.example.moviesapp.presentation.base.BaseRepository
 import com.example.moviesapp.data.retrofit.MoviesService

@@ -1,7 +1,7 @@
 package com.example.moviesapp.di
 
-import com.example.moviesapp.domain.repository.DetailsRepository
-import com.example.moviesapp.domain.repository.HomeRepository
+import com.example.moviesapp.data.repository.api.DetailsRepository
+import com.example.moviesapp.data.repository.api.HomeRepository
 import com.example.moviesapp.domain.usecase.DetailsUseCase
 import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.presentation.home.paging.HomePagingSource

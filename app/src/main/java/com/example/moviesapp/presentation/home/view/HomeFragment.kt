@@ -50,6 +50,14 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
 
 
+        binding?.ibSearch?.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
+        binding?.ibFavorite?.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_bookFragment)
+        }
+
     }
 
 

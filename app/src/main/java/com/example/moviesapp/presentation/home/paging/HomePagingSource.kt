@@ -2,7 +2,7 @@ package com.example.moviesapp.presentation.home.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.moviesapp.domain.repository.HomeRepository
+import com.example.moviesapp.data.repository.api.HomeRepository
 import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.data.model.Popular
 import com.example.moviesapp.data.model.Result

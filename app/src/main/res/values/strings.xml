@@ -3,4 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">Title</string>
+    <string name="title_menu_home_search">Search</string>
+    <string name="search_movies">Search Movies</string>
+    <string name="search_not_found">Search not found</string>
+    <string name="search_results">search results</string>
+    <string name="title_my_list">MY FAVORITES MOVIES</string>
+    <string name="title_started_search">Start searching for your favorite movies!</string>
 </resources>

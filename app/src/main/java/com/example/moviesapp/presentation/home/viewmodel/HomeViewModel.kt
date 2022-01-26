@@ -5,7 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.moviesapp.domain.repository.HomeRepository
+import com.example.moviesapp.data.repository.api.HomeRepository
 import com.example.moviesapp.presentation.base.BaseViewModel
 import com.example.moviesapp.presentation.home.paging.HomePagingSource
 import com.example.moviesapp.domain.usecase.HomeUseCase
