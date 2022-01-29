@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
     private val popularAdapter: PopularAdapter by lazy {
         PopularAdapter { movies ->
             val bundle = Bundle()
-            bundle.putInt(KEY_BUNDLE_ID, movies.id)
+            movies.id?.let { bundle.putInt(KEY_BUNDLE_ID, it) }
             findNavController().navigate(
                 R.id.action_homeFragment_to_detailsFragment,
                 bundle
@@ -48,16 +48,25 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservables()
         setupRecyclerView()
+        buttonSearch()
+        buttonBookmark()
 
 
-        binding?.ibSearch?.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
-        }
 
+
+
+    }
+
+    private fun buttonBookmark() {
         binding?.ibFavorite?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_bookFragment)
         }
+    }
 
+    private fun buttonSearch() {
+        binding?.ibSearch?.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
     }
 
 

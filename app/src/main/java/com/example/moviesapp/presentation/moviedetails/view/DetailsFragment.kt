@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.databinding.FragmentDetailsBinding
@@ -42,6 +43,13 @@ class DetailsFragment : Fragment() {
 
         viewModel.getMovieById(movieId)
         setupObservables()
+        buttonBack()
+    }
+
+    private fun buttonBack() {
+        binding?.ibDetailsBack?.setOnClickListener {
+            findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
+        }
     }
 
     private fun setupObservables() {

@@ -6,12 +6,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.databinding.MoviesCardBinding
-import com.example.moviesapp.data.model.Result
+import com.example.moviesapp.data.model.Movie
 
 
 class PopularAdapter(
-    private val onClickListener: (movies: Result) -> Unit
-) : PagingDataAdapter<Result, PopularAdapter.ViewHolder>(Result.DIFF_CALLBACK) {
+    private val onClickListener: (movies: Movie) -> Unit
+) : PagingDataAdapter<Movie, PopularAdapter.ViewHolder>(Movie.DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = MoviesCardBinding.inflate(
@@ -32,7 +32,7 @@ class PopularAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(movies: Result?, onClickListener: (movies: Result) -> Unit) {
+        fun bind(movies: Movie?, onClickListener: (movies: Movie) -> Unit) {
             with(binding) {
                 movies?.let {
                     tvitle.text = movies?.title
