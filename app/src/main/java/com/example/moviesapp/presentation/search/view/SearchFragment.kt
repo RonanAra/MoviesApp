@@ -50,12 +50,12 @@ class SearchFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.command = command
-        initComponents()
+        searchComponent()
         setupRecyclerView()
 
     }
 
-    private fun initComponents() {
+    private fun searchComponent() {
         binding?.searchView?.editText?.addTextChangedListener { editable ->
             viewModel.getSearch(toLowerCase(editable.toString()))
         }
@@ -63,7 +63,7 @@ class SearchFragment : BaseFragment() {
 
     private fun setupRecyclerView() {
         viewModel.onSuccessSearch.observe(viewLifecycleOwner, { listMovies ->
-            adapter.movies = listMovies
+            adapter.submitList(listMovies)
             binding?.rvSearchMovies?.adapter = adapter
             binding?.rvSearchMovies?.layoutManager = LinearLayoutManager(context)
 
