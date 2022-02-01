@@ -1,27 +1,21 @@
 package com.example.moviesapp.presentation.search.view
 
 import android.os.Bundle
-import android.provider.SyncStateContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
-import com.example.moviesapp.R
+import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentSearchBinding
 import com.example.moviesapp.extensions.toLowerCase
 import com.example.moviesapp.presentation.base.BaseFragment
-import com.example.moviesapp.presentation.home.view.HomeFragmentDirections
 import com.example.moviesapp.presentation.search.adapter.SearchAdapter
 import com.example.moviesapp.presentation.search.viewmodel.SearchViewModel
 import com.example.moviesapp.utils.Command
-import com.example.moviesapp.utils.ConstantsApp.Api.KEY_BUNDLE_ID
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment() {

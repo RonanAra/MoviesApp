@@ -5,7 +5,7 @@ import com.example.moviesapp.data.database.entity.toMovies
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.data.model.toEntity
 
-class DetailsDaoRepository(
+class MovieDaoRepositoryImp(
     private val movieFavoritesDao: MovieFavoritesDao
 ) {
 

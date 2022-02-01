@@ -2,11 +2,9 @@ package com.example.moviesapp.presentation.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
+import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.bumptech.glide.Glide
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.ItemSearchMoviesBinding

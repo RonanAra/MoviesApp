@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
+import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.bumptech.glide.Glide
 import com.example.moviesapp.databinding.MoviesCardBinding
 import com.example.moviesapp.data.model.Movie

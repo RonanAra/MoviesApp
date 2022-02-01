@@ -7,15 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
+import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.presentation.home.adapter.PopularAdapter
 import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
-import com.example.moviesapp.utils.ConstantsApp.Api.KEY_BUNDLE_ID
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

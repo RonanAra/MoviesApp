@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.view.interfaces
+package com.example.moviesapp.presentation.interfaces
 
 import com.example.moviesapp.data.model.Movie
 

@@ -8,15 +8,15 @@ import com.example.moviesapp.data.model.Movie
 @Entity(tableName = "moviesDb")
 data class MovieEntity(
     @PrimaryKey
-    val id: Int? = null,
+    val id: Int?,
     @ColumnInfo(name = "backdropPath")
-    var backdrop_path: String? = null,
+    var backdrop_path: String?,
     @ColumnInfo(name = "overview")
-    val overview: String? = null,
+    val overview: String?,
     @ColumnInfo(name = "posterPath")
-    var poster_path: String? = null,
+    var poster_path: String?,
     @ColumnInfo(name = "title")
-    val title: String? = null
+    val title: String?
 )
 
 
@@ -25,10 +25,10 @@ fun toMovies(listMovies: List<MovieEntity>) : ArrayList<Movie> {
     for (movieFavoriteItem in listMovies) {
         val movieFavorite = Movie(
             movieFavoriteItem.id,
-            movieFavoriteItem.title,
-            movieFavoriteItem.poster_path,
-            movieFavoriteItem.overview,
             movieFavoriteItem.backdrop_path,
+            movieFavoriteItem.overview,
+            movieFavoriteItem.poster_path,
+            movieFavoriteItem.title,
         )
         listMovieFavorites.add(movieFavorite)
     }

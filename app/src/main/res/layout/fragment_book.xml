@@ -36,12 +36,16 @@
             app:layout_constraintTop_toTopOf="@+id/ib_my_list_back" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcy_my_list_favorites"
         style="@style/RecyclerViewStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:listitem="@layout/item_list_horizontal_movies"
+
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_started"

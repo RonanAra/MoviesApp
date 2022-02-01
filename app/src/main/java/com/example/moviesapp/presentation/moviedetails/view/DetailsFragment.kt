@@ -48,6 +48,14 @@ class DetailsFragment : Fragment() {
         val movie = args.movie
 
 
+        setupArgsById()
+        buttonBack()
+        showIconMyList(movie)
+    }
+
+    private fun setupArgsById() {
+        val movie = args.movie
+
         binding?.let { binding ->
             activity?.let { activity ->
                 Glide
@@ -61,10 +69,6 @@ class DetailsFragment : Fragment() {
             }
         }
 
-
-
-        buttonBack()
-        showIconMyList(movie)
     }
 
     private fun buttonBack() {

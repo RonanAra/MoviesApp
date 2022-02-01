@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.moviesapp.data.model.Movie
-import com.example.moviesapp.data.repository.database.DetailsDaoRepository
+import com.example.moviesapp.data.repository.database.MovieDaoRepositoryImp
 import com.example.moviesapp.domain.usecase.DetailsUseCase
 import com.example.moviesapp.presentation.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class DetailsViewModel constructor(
     private val detailsUseCase: DetailsUseCase,
-    private val detailsDaoRepository: DetailsDaoRepository
+    private val detailsDaoRepository: MovieDaoRepositoryImp
 ) : BaseViewModel() {
 
     val isMovieFavoriteData = MutableLiveData<Boolean>()
