@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_bookFragment"
             app:destination="@id/bookFragment" />
+        <argument
+            android:name="movie"
+            app:argType="com.example.moviesapp.data.model.Movie" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -28,6 +31,12 @@
         <action
             android:id="@+id/action_detailsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="movie"
+            app:argType="com.example.moviesapp.data.model.Movie" />
+        <action
+            android:id="@+id/action_detailsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -37,6 +46,9 @@
         <action
             android:id="@+id/action_searchFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <argument
+            android:name="movie"
+            app:argType="com.example.moviesapp.data.model.Movie" />
     </fragment>
     <fragment
         android:id="@+id/bookFragment"
@@ -49,5 +61,8 @@
         <action
             android:id="@+id/action_bookFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="movieModel"
+            app:argType="com.example.moviesapp.data.model.Movie" />
     </fragment>
 </navigation>

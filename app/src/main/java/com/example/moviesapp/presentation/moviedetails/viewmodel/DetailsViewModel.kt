@@ -4,13 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.moviesapp.data.model.Movie
+import com.example.moviesapp.data.repository.database.DetailsDaoRepository
 import com.example.moviesapp.domain.usecase.DetailsUseCase
 import com.example.moviesapp.presentation.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class DetailsViewModel constructor(
-    private val detailsUseCase: DetailsUseCase
+    private val detailsUseCase: DetailsUseCase,
+    private val detailsDaoRepository: DetailsDaoRepository
 ) : BaseViewModel() {
+
+    val isMovieFavoriteData = MutableLiveData<Boolean>()
 
     private val _onSuccessMovieById: MutableLiveData<Movie> = MutableLiveData()
     val onSuccessMovieById: LiveData<Movie>
@@ -25,6 +29,24 @@ class DetailsViewModel constructor(
                     _onSuccessMovieById.postValue(it as? Movie)
                 }
             )
+        }
+    }
+
+    fun insertMovieFavorite(movie: Movie) {
+        viewModelScope.launch {
+            detailsDaoRepository.insert(movie)
+        }
+    }
+
+    fun deleteMovieFavorite(movie: Movie) {
+        viewModelScope.launch {
+            detailsDaoRepository.delete(movie)
+        }
+    }
+
+    fun isMovieFavorite(movie: Movie) {
+        viewModelScope.launch {
+            isMovieFavoriteData.value = detailsDaoRepository.getAllMovieFavorites().contains(movie)
         }
     }
 }

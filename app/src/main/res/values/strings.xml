@@ -11,5 +11,6 @@
     <string name="title_started_search">Start searching for your favorite movies!</string>
     <string name="text_no_results">Not Found</string>
     <string name="hint_search_text_input_layout">Search Movies</string>
+    <string name="label_details_my_list">Favoritos</string>
 
 </resources>

@@ -1,14 +1,13 @@
 package com.example.moviesapp.domain.usecase
 
 import com.example.moviesapp.extensions.getFullImageUrl
-import com.example.moviesapp.data.repository.api.HomeRepository
+import com.example.moviesapp.data.repository.api.HomeApiRepository
 import com.example.moviesapp.data.model.MovieResult
 import com.example.moviesapp.data.model.Movie
 
-class HomeUseCase
-    constructor(
-    private val repository : HomeRepository
-        ){
+class HomeUseCase(
+    private val repository: HomeApiRepository
+) {
 
 
     fun setupMoviesList(list: MovieResult?): List<Movie> {

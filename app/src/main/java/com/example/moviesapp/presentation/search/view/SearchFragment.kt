@@ -11,10 +11,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.example.moviesapp.R
+import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentSearchBinding
 import com.example.moviesapp.extensions.toLowerCase
 import com.example.moviesapp.presentation.base.BaseFragment
+import com.example.moviesapp.presentation.home.view.HomeFragmentDirections
 import com.example.moviesapp.presentation.search.adapter.SearchAdapter
 import com.example.moviesapp.presentation.search.viewmodel.SearchViewModel
 import com.example.moviesapp.utils.Command
@@ -28,14 +31,7 @@ class SearchFragment : BaseFragment() {
 
     private val viewModel: SearchViewModel by viewModel()
 
-    private val adapter = SearchAdapter { movie ->
-        val bundle = Bundle()
-        movie.id?.let { bundle.putInt(KEY_BUNDLE_ID, it) }
-        findNavController().navigate(
-            R.id.action_searchFragment_to_detailsFragment,
-            bundle
-        )
-    }
+    private val adapter = SearchAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,10 +63,18 @@ class SearchFragment : BaseFragment() {
             binding?.rvSearchMovies?.adapter = adapter
             binding?.rvSearchMovies?.layoutManager = LinearLayoutManager(context)
 
-        })
+            adapter.setMovieOnClickListener(object : MovieOnClickListener {
+                override fun onItemClick(movie: Movie) {
+                    val direction =
+                        SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movie)
+                    findNavController().navigate(direction)
 
+                }
+            })
+        })
     }
-        override fun onDestroyView() {
+
+    override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }

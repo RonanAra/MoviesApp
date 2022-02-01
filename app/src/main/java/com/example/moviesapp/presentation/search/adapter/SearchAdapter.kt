@@ -6,20 +6,31 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.bumptech.glide.Glide
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.ItemSearchMoviesBinding
 
 class SearchAdapter(
-    private val onClickListener: (movie: Movie) -> Unit
-) : ListAdapter<Movie, SearchAdapter.SerieViewHolder>(Movie.DIFF_CALLBACK) {
 
-    inner class SerieViewHolder(val binding: ItemSearchMoviesBinding) :
+) : ListAdapter<Movie, SearchAdapter.ViewHolder>(Movie.DIFF_CALLBACK) {
+
+
+    private lateinit var movieOnClickListener: MovieOnClickListener
+
+    fun setMovieOnClickListener(
+        movieOnClickListener: MovieOnClickListener
+    ) {
+        this.movieOnClickListener = movieOnClickListener
+    }
+
+
+    inner class ViewHolder(val binding: ItemSearchMoviesBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SerieViewHolder {
-        return SerieViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
             ItemSearchMoviesBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -28,7 +39,7 @@ class SearchAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: SerieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movieCurrent = getItem(position)
         Glide
             .with(holder.binding.ivMoviePosterSearch)
@@ -39,7 +50,7 @@ class SearchAdapter(
             binding.tvTitleMovieSearch.text = movieCurrent.title
 
             binding.ivMoviePosterSearch.setOnClickListener {
-                onClickListener(movieCurrent)
+                movieOnClickListener.onItemClick(movieCurrent)
             }
         }
     }

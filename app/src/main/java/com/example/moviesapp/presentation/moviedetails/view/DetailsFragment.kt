@@ -7,22 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
+import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentDetailsBinding
 import com.example.moviesapp.databinding.FragmentHomeBinding
+import com.example.moviesapp.extensions.createToast
 import com.example.moviesapp.presentation.moviedetails.viewmodel.DetailsViewModel
 import com.example.moviesapp.utils.Command
 import com.example.moviesapp.utils.ConstantsApp.Api.KEY_BUNDLE_ID
+import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DetailsFragment : Fragment() {
 
     private var binding: FragmentDetailsBinding? = null
-    private val movieId: Int by lazy {
-        arguments?.getInt(KEY_BUNDLE_ID) ?: -1
-    }
+
+
+    private val args: DetailsFragmentArgs by navArgs()
 
     var command: MutableLiveData<Command> = MutableLiveData()
     private val viewModel: DetailsViewModel by viewModel()
@@ -41,9 +45,26 @@ class DetailsFragment : Fragment() {
 
         viewModel.command = command
 
-        viewModel.getMovieById(movieId)
-        setupObservables()
+        val movie = args.movie
+
+
+        binding?.let { binding ->
+            activity?.let { activity ->
+                Glide
+                    .with(activity)
+                    .load(movie.backdrop_path)
+                    .error(R.drawable.place_holder)
+                    .into(binding.ivDetailsImage)
+
+                binding.tvTitleDetails.text = movie.title
+                binding.tvOverview.text = movie.overview
+            }
+        }
+
+
+
         buttonBack()
+        showIconMyList(movie)
     }
 
     private fun buttonBack() {
@@ -52,25 +73,32 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun setupObservables() {
-        viewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
-            it?.let { result ->
-                binding?.let { binding ->
-                    activity?.let { activity ->
-                        Glide
-                            .with(activity)
-                            .load(result.backdrop_path)
-                            .error(R.drawable.place_holder)
-                            .into(binding.ivDetailsImage)
 
-                    }
-                }
-                binding?.tvTitleDetails?.text = result.title
-                binding?.tvOverview?.text = result.overview
+    private fun showIconMyList(movie: Movie) {
 
+        viewModel.isMovieFavorite(movie)
+        viewModel.isMovieFavoriteData.observe(viewLifecycleOwner, { isFavorite ->
+            if (isFavorite) {
+                binding?.btnLinearDetailsMyList?.setOnClickListener(deleteMovieFavorite(movie))
+                binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_check)
+            } else {
+                binding?.btnLinearDetailsMyList?.setOnClickListener(addMovieFavorite(movie))
+                binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_favorite_border_24px)
             }
         })
+    }
 
+
+    private fun addMovieFavorite(movie: Movie) = View.OnClickListener {
+        viewModel.insertMovieFavorite(movie)
+        binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_check)
+        requireContext().createToast("Add in My List")
+    }
+
+    private fun deleteMovieFavorite(movie: Movie) = View.OnClickListener {
+        viewModel.deleteMovieFavorite(movie)
+        binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_favorite_border_24px)
+        requireContext().createToast("Delete in My List")
     }
 
     override fun onDestroyView() {

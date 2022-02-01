@@ -12,4 +12,9 @@ class ConstantsApp {
         const val KEY_BUNDLE_ID = "movieId"
 
     }
+
+    object Database {
+
+        const val NAME_DATABASE = "movies_database"
+    }
 }

@@ -2,14 +2,14 @@ package com.example.moviesapp.presentation.home.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.moviesapp.data.repository.api.HomeRepository
+import com.example.moviesapp.data.repository.api.HomeApiRepository
 import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.data.model.MovieResult
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.utils.ResponseApi
 
 class HomePagingSource(
-    private val homeRepository: HomeRepository,
+    private val homeRepository: HomeApiRepository,
     private val homeUseCase: HomeUseCase
 ) : PagingSource<Int, Movie>() {
 

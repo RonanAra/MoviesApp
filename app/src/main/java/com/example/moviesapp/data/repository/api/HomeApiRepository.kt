@@ -4,7 +4,7 @@ import com.example.moviesapp.presentation.base.BaseRepository
 import com.example.moviesapp.data.retrofit.MoviesService
 import com.example.moviesapp.utils.ResponseApi
 
-class HomeRepository: BaseRepository() {
+class HomeApiRepository: BaseRepository() {
 
     suspend fun getPopular(page: Int): ResponseApi {
         return safeApiCall {

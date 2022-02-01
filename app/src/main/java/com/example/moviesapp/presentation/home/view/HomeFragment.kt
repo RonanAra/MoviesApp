@@ -9,7 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.example.moviesapp.R
+import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.presentation.home.adapter.PopularAdapter
 import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
@@ -23,16 +25,7 @@ class HomeFragment : Fragment() {
     private var binding: FragmentHomeBinding? = null
     private val viewModel: HomeViewModel by viewModel()
 
-    private val popularAdapter: PopularAdapter by lazy {
-        PopularAdapter { movies ->
-            val bundle = Bundle()
-            movies.id?.let { bundle.putInt(KEY_BUNDLE_ID, it) }
-            findNavController().navigate(
-                R.id.action_homeFragment_to_detailsFragment,
-                bundle
-            )
-        }
-    }
+    private val popularAdapter = PopularAdapter()
 
 
     override fun onCreateView(
@@ -50,8 +43,6 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         buttonSearch()
         buttonBookmark()
-
-
 
 
     }
@@ -82,6 +73,13 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPopular().collect { pagingData ->
                 popularAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
+
+                popularAdapter.setMovieOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
+                        findNavController().navigate(direction)
+                    }
+                })
             }
         }
     }
