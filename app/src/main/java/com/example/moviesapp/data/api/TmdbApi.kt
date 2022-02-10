@@ -14,10 +14,6 @@ interface TmdbApi {
         @Query("page") page: Int
     ): Response<MovieResult>
 
-    @GET("movie/{movie_id}")
-    suspend fun getMovieById(
-        @Path("movie_id") movieId: Int
-    ): Response<Movie>
 
     @GET("search/movie")
     suspend fun getSearchMovie(

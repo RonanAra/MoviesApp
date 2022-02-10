@@ -2,11 +2,9 @@ package com.example.moviesapp.di
 
 import androidx.room.Room
 import com.example.moviesapp.data.database.MovieDatabase
-import com.example.moviesapp.data.repository.api.DetailsApiRepository
 import com.example.moviesapp.data.repository.api.HomeApiRepository
 import com.example.moviesapp.data.repository.api.SearchApiRepository
 import com.example.moviesapp.data.repository.database.MovieDaoRepositoryImp
-import com.example.moviesapp.domain.usecase.DetailsUseCase
 import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.domain.usecase.SearchUseCase
 import com.example.moviesapp.presentation.bookmarks.viewmodel.BookViewModel
@@ -34,7 +32,6 @@ object AppModule {
 
     val appModule = module {
         single { HomeApiRepository() }
-        factory { DetailsApiRepository() }
         single { SearchApiRepository() }
 
 
@@ -42,7 +39,6 @@ object AppModule {
 
 
         single { HomeUseCase(repository = get()) }
-        single { DetailsUseCase(repository = get()) }
         single { SearchUseCase(searchRepository = get()) }
 
         single {
@@ -53,7 +49,7 @@ object AppModule {
         }
 
         viewModel { BookViewModel(movieDaoRepository = get()) }
-        viewModel { DetailsViewModel(detailsUseCase = get(), detailsDaoRepository = get()) }
+        viewModel { DetailsViewModel(detailsDaoRepository = get()) }
         viewModel { HomeViewModel(homeUseCase = get(), homeRepository = get()) }
         viewModel { SearchViewModel(searchUseCase = get())}
     }

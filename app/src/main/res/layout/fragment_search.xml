@@ -26,6 +26,7 @@
             android:layout_height="36dp"
             android:background="@color/TertiaryColor"
             android:fontFamily="@font/opensans_semibold"
+            android:backgroundTint="@color/white"
             android:gravity="fill_horizontal|fill_vertical"
             android:hint="@string/hint_search_text_input_layout"
             android:imeOptions="actionDone"

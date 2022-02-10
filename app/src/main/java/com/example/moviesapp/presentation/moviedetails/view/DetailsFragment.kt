@@ -1,10 +1,10 @@
 package com.example.moviesapp.presentation.moviedetails.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -12,12 +12,9 @@ import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentDetailsBinding
-import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.extensions.createToast
 import com.example.moviesapp.presentation.moviedetails.viewmodel.DetailsViewModel
 import com.example.moviesapp.utils.Command
-import com.example.moviesapp.utils.ConstantsApp.Api.KEY_BUNDLE_ID
-import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -84,7 +81,7 @@ class DetailsFragment : Fragment() {
         viewModel.isMovieFavoriteData.observe(viewLifecycleOwner, { isFavorite ->
             if (isFavorite) {
                 binding?.btnLinearDetailsMyList?.setOnClickListener(deleteMovieFavorite(movie))
-                binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_check)
+                binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_outline_favorite_red)
             } else {
                 binding?.btnLinearDetailsMyList?.setOnClickListener(addMovieFavorite(movie))
                 binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_favorite_border_24px)
@@ -95,7 +92,7 @@ class DetailsFragment : Fragment() {
 
     private fun addMovieFavorite(movie: Movie) = View.OnClickListener {
         viewModel.insertMovieFavorite(movie)
-        binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_check)
+        binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_outline_favorite_red)
         requireContext().createToast("Add in My List")
     }
 

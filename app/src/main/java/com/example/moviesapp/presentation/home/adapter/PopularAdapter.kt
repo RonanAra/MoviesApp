@@ -8,6 +8,7 @@ import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.bumptech.glide.Glide
 import com.example.moviesapp.databinding.MoviesCardBinding
 import com.example.moviesapp.data.model.Movie
+import com.example.moviesapp.databinding.ItemListHorizontalMoviesBinding
 
 
 class PopularAdapter(
@@ -24,7 +25,7 @@ class PopularAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = MoviesCardBinding.inflate(
+        val binding = ItemListHorizontalMoviesBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -38,7 +39,7 @@ class PopularAdapter(
     }
 
 
-    class ViewHolder(val binding: MoviesCardBinding) :
+    class ViewHolder(val binding: ItemListHorizontalMoviesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
 
@@ -48,8 +49,7 @@ class PopularAdapter(
         ) {
             with(binding) {
                 movies?.let {
-                    tvitle.text = movies?.title
-                    mvCard.setOnClickListener {
+                    itemList.setOnClickListener {
                         movieOnClickListener.onItemClick(movies)
                     }
                 }
@@ -57,7 +57,7 @@ class PopularAdapter(
                 Glide
                     .with(itemView.context)
                     .load(movies?.poster_path)
-                    .into(ivImage)
+                    .into(ivMoviePoster)
 
 
             }

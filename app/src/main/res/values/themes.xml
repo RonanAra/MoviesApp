@@ -23,6 +23,8 @@
         <item name="android:minHeight">@dimen/button_icon_size</item>
     </style>
 
+
+
     <style name="WatchCardDefault">
         <item name="cardBackgroundColor">@color/lighter_gray</item>
         <item name="android:layout_marginEnd">@dimen/margin_default</item>
