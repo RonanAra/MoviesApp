@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LayoutStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/LayoutStyle"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.home.view.HomeFragment">
 
 
@@ -16,43 +16,53 @@
             android:id="@+id/ivHome"
             android:layout_width="0dp"
             android:layout_height="330dp"
-            android:scaleType="centerCrop"
             android:foreground="@drawable/foreground_header_home"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/ib_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/title_menu_home_search"
+            android:padding="16dp"
+            android:src="@drawable/ic_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/home"
+
             />
 
+        <TextView
+            android:id="@+id/tv_home_welcome"
+            style="@style/TextStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/title_welcome_home"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/ib_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-    <ImageButton
-        android:id="@+id/ib_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/title_menu_home_search"
-        android:padding="16dp"
-        android:src="@drawable/ic_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
-
-
-    <Button
-        android:id="@+id/ib_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_list"
-        android:backgroundTint="@color/lighter_gray"
-        android:textColor="@color/black"
-        app:layout_constraintVertical_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/ivHome"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <Button
+            android:id="@+id/ib_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/lighter_gray"
+            android:text="@string/my_list"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/ivHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
 
         <TextView
             android:id="@+id/titlePopular"
@@ -66,18 +76,17 @@
             app:layout_constraintTop_toBottomOf="@+id/ivHome" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHomePopular"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titlePopular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHomePopular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titlePopular" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

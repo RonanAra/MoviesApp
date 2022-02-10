@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
-import com.alvarengadev.alvaflix.view.mylist.adapter.MyListAdapter
+import com.example.moviesapp.presentation.bookmarks.adapter.MyListAdapter
 import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentBookBinding

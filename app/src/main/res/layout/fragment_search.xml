@@ -48,6 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchView"
         app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/item_search_movies" />
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
