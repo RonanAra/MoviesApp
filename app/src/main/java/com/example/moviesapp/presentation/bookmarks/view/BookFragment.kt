@@ -36,11 +36,12 @@ class BookFragment : Fragment() {
 
         buttonBookBack()
         setupObservables()
+        viewModel.getAllMovieFavorites()
 
     }
 
     private fun setupObservables() {
-        viewModel.listFavorites.observe(viewLifecycleOwner, { listFavorites ->
+        viewModel.favoritesLivedata.observe(viewLifecycleOwner) { listFavorites ->
             if (listFavorites != null && listFavorites.size > 0) {
                 val myListAdapter = MyListAdapter(listFavorites)
 
@@ -64,7 +65,7 @@ class BookFragment : Fragment() {
                 binding?.containerStarted?.visibility = View.VISIBLE
 
             }
-        })
+        }
     }
 
 

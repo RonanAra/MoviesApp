@@ -1,5 +1,6 @@
 package com.example.moviesapp.presentation.bookmarks.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,14 +12,16 @@ class BookViewModel(
     private val movieDaoRepository: MovieDaoRepositoryImp
 ) : ViewModel() {
 
-    val listFavorites = MutableLiveData<ArrayList<Movie>?>()
+    private val listFavorites = MutableLiveData<ArrayList<Movie>>()
+
+    val favoritesLivedata: LiveData<ArrayList<Movie>>
+        get() = listFavorites
 
     init {
         getAllMovieFavorites()
     }
 
-
-    private fun getAllMovieFavorites() {
+     fun getAllMovieFavorites() {
         viewModelScope.launch {
             listFavorites.value = movieDaoRepository.getAllMovieFavorites()
         }
