@@ -15,5 +15,6 @@
     <string name="my_list">My List</string>
     <string name="title_popular_movies_home">Popular movies</string>
     <string name="title_welcome_home">Watch your series and movies favorites!</string>
+    <string name="tittle_latest">Lançamentos</string>
 
 </resources>

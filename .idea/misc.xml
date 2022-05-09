@@ -23,10 +23,14 @@
         <entry key="..\:/Users/55119/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/item_list_horizontal_movies.xml" value="0.24864130434782608" />
         <entry key="..\:/Users/55119/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/item_search_movies.xml" value="0.21422101449275363" />
         <entry key="..\:/Users/55119/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/movies_card.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/55119/AndroidStudioProjects/Porjetos Pessoais/MoviesApp/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/55119/AndroidStudioProjects/Porjetos Pessoais/MoviesApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/55119/AndroidStudioProjects/Porjetos Pessoais/MoviesApp/app/src/main/res/layout/item_list_horizontal_movies.xml" value="0.25" />
+        <entry key="..\:/Users/55119/AndroidStudioProjects/Porjetos Pessoais/MoviesApp/app/src/main/res/layout/item_search_movies.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
