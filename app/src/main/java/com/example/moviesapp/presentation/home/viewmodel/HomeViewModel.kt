@@ -20,10 +20,10 @@ class HomeViewModel(
     private val homeUseCase: HomeUseCase,
 ) : BaseViewModel() {
 
-    private val _onSuccesLatest: MutableLiveData<List<Movie>> = MutableLiveData()
+    private val _onSuccesRecommend: MutableLiveData<List<Movie>> = MutableLiveData()
 
-    val onSuccessLatest: LiveData<List<Movie>>
-        get() = _onSuccesLatest
+    val onSuccessRecommend: LiveData<List<Movie>>
+        get() = _onSuccesRecommend
 
 
     private var mPagingData: Flow<PagingData<Movie>>? = null;
@@ -43,13 +43,13 @@ class HomeViewModel(
         return mPagingData as Flow<PagingData<Movie>>
     }
 
-    fun getLatestMovies(page: Int) {
+    fun getRecommend() {
         viewModelScope.launch {
             callApi(
-                suspend { homeUseCase.getNowPlayingMovies(page) },
+                suspend { homeUseCase.getRecommend() },
                 onSuccess = {
                     val result = it as? List<*>
-                    _onSuccesLatest.postValue(
+                    _onSuccesRecommend.postValue(
                         result?.filterIsInstance<Movie>()
                     )
                 })

@@ -9,9 +9,9 @@ import com.example.moviesapp.databinding.ItemListHorizontalMoviesBinding
 import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 
 
-class NowPlayingAdapter(
+class RecommendAdapter(
     private val listaMovies: List<Movie>
-) : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecommendAdapter.ViewHolder>() {
 
     private lateinit var movieOnClickListener: MovieOnClickListener
 
@@ -31,7 +31,7 @@ class NowPlayingAdapter(
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: NowPlayingAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecommendAdapter.ViewHolder, position: Int) {
         holder.bind(listaMovies[position], movieOnClickListener)
     }
 

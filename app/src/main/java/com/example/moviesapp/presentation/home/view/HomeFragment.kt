@@ -13,7 +13,7 @@ import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentHomeBinding
-import com.example.moviesapp.presentation.home.adapter.NowPlayingAdapter
+import com.example.moviesapp.presentation.home.adapter.RecommendAdapter
 import com.example.moviesapp.presentation.home.adapter.PopularAdapter
 import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
 import com.example.moviesapp.utils.Command
@@ -43,24 +43,23 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.command = command
-        viewModel.getLatestMovies(page = 1)
+        viewModel.getRecommend()
 
         setupObservablesPopular()
         setupRecyclerView()
-        buttonSearch()
-        buttonBookmark()
+        initButtons()
         setupObservablesNowPlaying()
 
 
     }
 
     private fun setupObservablesNowPlaying() {
-        viewModel.onSuccessLatest.observe(viewLifecycleOwner) {
+        viewModel.onSuccessRecommend.observe(viewLifecycleOwner) {
             it?.let {
-                val nowPlayingAdapter = NowPlayingAdapter(
+                val recommendAdapter = RecommendAdapter(
                     listaMovies = it
                 )
-                nowPlayingAdapter.setMovieOnClickListener(object : MovieOnClickListener {
+                recommendAdapter.setMovieOnClickListener(object : MovieOnClickListener {
                     override fun onItemClick(movie: Movie) {
                         val direction =
                             HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
@@ -73,7 +72,7 @@ class HomeFragment : Fragment() {
                         rvHomeLatest.apply {
                             layoutManager =
                                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                            adapter = nowPlayingAdapter
+                            adapter = recommendAdapter
                         }
                     }
                 }
@@ -106,23 +105,17 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun buttonBookmark() {
+    private fun initButtons() {
         binding?.ibFavorite?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_bookFragment)
         }
-    }
-
-    private fun buttonSearch() {
         binding?.ibSearch?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         binding = null
     }
-
-
 }

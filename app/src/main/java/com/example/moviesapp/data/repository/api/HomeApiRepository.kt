@@ -12,9 +12,9 @@ class HomeApiRepository : BaseRepository() {
         }
     }
 
-    suspend fun getNowPlayingMovies(page: Int): ResponseApi {
+    suspend fun getRecommend(): ResponseApi {
         return safeApiCall {
-            MoviesService.tmdbApi.getNowPlayingMovies(page)
+            MoviesService.tmdbApi.listRecommended()
         }
     }
 }

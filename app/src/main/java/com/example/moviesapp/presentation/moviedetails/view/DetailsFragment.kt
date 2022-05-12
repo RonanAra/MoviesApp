@@ -22,7 +22,6 @@ class DetailsFragment : Fragment() {
 
     private var binding: FragmentDetailsBinding? = null
 
-
     private val args: DetailsFragmentArgs by navArgs()
 
     var command: MutableLiveData<Command> = MutableLiveData()
@@ -78,7 +77,7 @@ class DetailsFragment : Fragment() {
     private fun showIconMyList(movie: Movie) {
 
         viewModel.isMovieFavorite(movie)
-        viewModel.isMovieFavoriteData.observe(viewLifecycleOwner, { isFavorite ->
+        viewModel.isMovieFavoriteData.observe(viewLifecycleOwner) { isFavorite ->
             if (isFavorite) {
                 binding?.btnLinearDetailsMyList?.setOnClickListener(deleteMovieFavorite(movie))
                 binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_outline_favorite_red)
@@ -86,7 +85,7 @@ class DetailsFragment : Fragment() {
                 binding?.btnLinearDetailsMyList?.setOnClickListener(addMovieFavorite(movie))
                 binding?.ivDetailsIconMyList?.setImageResource(R.drawable.ic_favorite_border_24px)
             }
-        })
+        }
     }
 
 
