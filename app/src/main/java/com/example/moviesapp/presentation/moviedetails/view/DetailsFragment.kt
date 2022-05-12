@@ -14,8 +14,10 @@ import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentDetailsBinding
 import com.example.moviesapp.extensions.createToast
+import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.example.moviesapp.presentation.moviedetails.adapter.SimilarAdapter
 import com.example.moviesapp.presentation.moviedetails.viewmodel.DetailsViewModel
+import com.example.moviesapp.presentation.search.view.SearchFragmentDirections
 import com.example.moviesapp.utils.Command
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -57,6 +59,15 @@ class DetailsFragment : Fragment() {
                 val similarAdapter = SimilarAdapter(
                     listaMovies = it
                 )
+                similarAdapter.setMovieOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val direction =
+                            DetailsFragmentDirections.actionDetailsFragmentSelf(movie)
+                        findNavController().navigate(direction)
+
+                    }
+                })
+
                 binding?.let {
                     with(it) {
                         rcyDetailsSimilarMovies.apply {
