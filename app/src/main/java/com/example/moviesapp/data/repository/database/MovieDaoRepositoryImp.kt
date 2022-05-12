@@ -6,7 +6,7 @@ import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.data.model.toEntity
 
 class MovieDaoRepositoryImp(
-    private val movieFavoritesDao: MovieFavoritesDao
+    private val movieFavoritesDao: MovieFavoritesDao,
 ) {
 
     suspend fun insert(movie: Movie) {
@@ -20,5 +20,4 @@ class MovieDaoRepositoryImp(
     suspend fun getAllMovieFavorites(): ArrayList<Movie> {
         return toMovies(movieFavoritesDao.getAll())
     }
-
 }

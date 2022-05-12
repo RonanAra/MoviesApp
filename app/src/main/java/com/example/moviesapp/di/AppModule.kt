@@ -2,9 +2,11 @@ package com.example.moviesapp.di
 
 import androidx.room.Room
 import com.example.moviesapp.data.database.MovieDatabase
+import com.example.moviesapp.data.repository.api.DetailsApiRepository
 import com.example.moviesapp.data.repository.api.HomeApiRepository
 import com.example.moviesapp.data.repository.api.SearchApiRepository
 import com.example.moviesapp.data.repository.database.MovieDaoRepositoryImp
+import com.example.moviesapp.domain.usecase.DetailsUseCase
 import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.domain.usecase.SearchUseCase
 import com.example.moviesapp.presentation.bookmarks.viewmodel.BookViewModel
@@ -33,6 +35,7 @@ object AppModule {
     val appModule = module {
         single { HomeApiRepository() }
         single { SearchApiRepository() }
+        single { DetailsApiRepository() }
 
 
         factory { MovieDaoRepositoryImp(movieFavoritesDao = get()) }
@@ -40,6 +43,7 @@ object AppModule {
 
         single { HomeUseCase(repository = get()) }
         single { SearchUseCase(searchRepository = get()) }
+        single { DetailsUseCase(similarRepository = get()) }
 
         single {
             HomePagingSource(
@@ -49,7 +53,7 @@ object AppModule {
         }
 
         viewModel { BookViewModel(movieDaoRepository = get()) }
-        viewModel { DetailsViewModel(detailsDaoRepository = get()) }
+        viewModel { DetailsViewModel(detailsDaoRepository = get(), similarUseCase = get()) }
         viewModel { HomeViewModel(homeUseCase = get(), homeRepository = get()) }
         viewModel { SearchViewModel(searchUseCase = get())}
     }

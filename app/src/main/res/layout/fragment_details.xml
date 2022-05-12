@@ -80,6 +80,30 @@
                 app:layout_constraintTop_toBottomOf="@id/ivDetailsImage"
                 tools:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." />
 
+
+            <TextView
+                android:id="@+id/tv_details_similar_movies"
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="Similares"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_linear_details_my_list" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcy_details_similar_movies"
+                style="@style/RecyclerViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_details_similar_movies" />
+
             <LinearLayout
                 android:id="@+id/btn_linear_details_my_list"
                 android:layout_width="wrap_content"
@@ -98,7 +122,7 @@
                     android:src="@drawable/ic_favorite_border_24px" />
 
                 <TextView
-                    android:id="@+id/tv_details_title_mt_list"
+                    android:id="@+id/tv_details_title_book_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -107,7 +131,7 @@
                     android:textColor="@color/textColor" />
             </LinearLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 </LinearLayout>

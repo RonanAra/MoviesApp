@@ -1,5 +1,6 @@
 package com.example.moviesapp.data.model
 
-data class RecommendResult(
+
+data class MovieSimilarResults(
     val results: List<Movie>
 )

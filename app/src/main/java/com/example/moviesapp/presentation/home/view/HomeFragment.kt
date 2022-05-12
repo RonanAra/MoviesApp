@@ -119,3 +119,4 @@ class HomeFragment : Fragment() {
         binding = null
     }
 }
+

@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentDetailsBinding
 import com.example.moviesapp.extensions.createToast
+import com.example.moviesapp.presentation.moviedetails.adapter.SimilarAdapter
 import com.example.moviesapp.presentation.moviedetails.viewmodel.DetailsViewModel
 import com.example.moviesapp.utils.Command
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,11 +44,31 @@ class DetailsFragment : Fragment() {
         viewModel.command = command
 
         val movie = args.movie
-
-
+        movie.id?.let { viewModel.getSimilar(it) }
         setupArgsById()
         buttonBack()
         showIconMyList(movie)
+        setupObservables()
+    }
+
+    private fun setupObservables() {
+        viewModel.onSuccessSimilarMovies.observe(viewLifecycleOwner) {
+            it?.let {
+                val similarAdapter = SimilarAdapter(
+                    listaMovies = it
+                )
+                binding?.let {
+                    with(it) {
+                        rcyDetailsSimilarMovies.apply {
+                            layoutManager =
+                                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                            adapter = similarAdapter
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
     private fun setupArgsById() {
