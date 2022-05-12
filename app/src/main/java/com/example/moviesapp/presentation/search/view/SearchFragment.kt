@@ -52,21 +52,38 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun setupRecyclerView() {
-        viewModel.onSuccessSearch.observe(viewLifecycleOwner, { listMovies ->
-            adapter.submitList(listMovies)
-            binding?.rvSearchMovies?.adapter = adapter
-            binding?.rvSearchMovies?.layoutManager = LinearLayoutManager(context)
+        viewModel.onSuccessSearch.observe(viewLifecycleOwner) { listMovies ->
+            if (listMovies !=  null) {
+                adapter.submitList(listMovies)
+                binding?.rvSearchMovies?.adapter = adapter
+                binding?.rvSearchMovies?.layoutManager = LinearLayoutManager(context)
 
-            adapter.setMovieOnClickListener(object : MovieOnClickListener {
-                override fun onItemClick(movie: Movie) {
-                    val direction =
-                        SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movie)
-                    findNavController().navigate(direction)
+                showSearch()
 
-                }
-            })
-        })
+                adapter.setMovieOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val direction =
+                            SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movie)
+                        findNavController().navigate(direction)
+
+                    }
+                })
+            } else {
+                hideSearch()
+            }
+        }
     }
+
+    private fun showSearch() {
+        binding?.rvSearchMovies?.visibility = View.VISIBLE
+        binding?.tvSearchNotingFound?.visibility = View.GONE
+    }
+
+    private fun hideSearch() {
+        binding?.rvSearchMovies?.visibility = View.GONE
+        binding?.tvSearchNotingFound?.visibility = View.VISIBLE
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

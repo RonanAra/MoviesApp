@@ -14,7 +14,6 @@ interface TmdbApi {
         @Query("page") page: Int
     ): Response<MovieResult>
 
-
     @GET("search/movie")
     suspend fun getSearchMovie(
         @Query(SearchManager.QUERY) searchMovie: String
