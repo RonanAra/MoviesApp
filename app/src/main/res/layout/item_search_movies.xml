@@ -40,7 +40,4 @@
         app:layout_constraintTop_toTopOf="@+id/cardView"
         tools:text="Lady and the Tramp" />
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
