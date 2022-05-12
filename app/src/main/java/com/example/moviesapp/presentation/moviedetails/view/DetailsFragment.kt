@@ -102,7 +102,7 @@ class DetailsFragment : Fragment() {
 
     private fun buttonBack() {
         binding?.ibDetailsBack?.setOnClickListener {
-            findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
+            findNavController().popBackStack()
         }
     }
 
