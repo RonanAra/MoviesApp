@@ -17,6 +17,8 @@ import com.example.moviesapp.presentation.home.adapter.RecommendAdapter
 import com.example.moviesapp.presentation.home.adapter.PopularAdapter
 import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
 import com.example.moviesapp.utils.Command
+import com.facebook.shimmer.ShimmerFrameLayout
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +28,8 @@ class HomeFragment : Fragment() {
     private var binding: FragmentHomeBinding? = null
     private val viewModel: HomeViewModel by viewModel()
     var command: MutableLiveData<Command> = MutableLiveData()
-
+    private var shimmerViewMost: ShimmerFrameLayout? = null
+    private var shimmerViewRecommend: ShimmerFrameLayout? = null
     private val popularAdapter = PopularAdapter()
 
 
@@ -42,23 +45,29 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        shimmerViewMost = binding?.shimmerPlaceHolderMost ?: shimmerViewMost
+        shimmerViewRecommend = binding?.shimmerPlaceHolderRecommend ?: shimmerViewRecommend
+
         viewModel.command = command
         viewModel.getRecommend()
 
         setupObservablesPopular()
         setupRecyclerView()
         initButtons()
-        setupObservablesNowPlaying()
-
+        setupObservablesRecommend()
 
     }
 
-    private fun setupObservablesNowPlaying() {
-        viewModel.onSuccessRecommend.observe(viewLifecycleOwner) {
-            it?.let {
+    private fun setupObservablesRecommend() {
+        viewModel.onSuccessRecommend.observe(viewLifecycleOwner) { listMovies ->
+            if (listMovies != null && listMovies.isNotEmpty()) {
                 val recommendAdapter = RecommendAdapter(
-                    listaMovies = it
+                    listaMovies = listMovies
                 )
+                binding?.rvHomeRecommend?.visibility = View.VISIBLE
+                shimmerViewRecommend?.stopShimmer()
+                shimmerViewRecommend?.visibility = View.GONE
+
                 recommendAdapter.setMovieOnClickListener(object : MovieOnClickListener {
                     override fun onItemClick(movie: Movie) {
                         val direction =
@@ -69,13 +78,17 @@ class HomeFragment : Fragment() {
 
                 binding?.let {
                     with(it) {
-                        rvHomeLatest.apply {
+                        rvHomeRecommend.apply {
                             layoutManager =
                                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                             adapter = recommendAdapter
                         }
                     }
                 }
+            } else {
+                binding?.rvHomeRecommend?.visibility = View.GONE
+                shimmerViewRecommend?.startShimmer()
+                shimmerViewRecommend?.visibility = View.VISIBLE
             }
         }
     }
@@ -86,6 +99,7 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = popularAdapter
         }
+
     }
 
 
@@ -93,6 +107,10 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPopular().collect { pagingData ->
                 popularAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
+
+
+                shimmerViewMost?.stopShimmer()
+                shimmerViewMost?.visibility = View.GONE
 
                 popularAdapter.setMovieOnClickListener(object : MovieOnClickListener {
                     override fun onItemClick(movie: Movie) {
