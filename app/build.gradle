@@ -55,8 +55,6 @@ dependencies {
     kapt "androidx.room:room-compiler:2.4.1"
     implementation "androidx.room:room-ktx:2.4.1"
 
-    //Shimmer Facebook
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     //Kotlin
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'

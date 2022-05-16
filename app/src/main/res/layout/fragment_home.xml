@@ -75,32 +75,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivHome" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_placeHolder_most"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titlePopular">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHomePopular"
@@ -121,36 +95,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/tittle_latest"
-            app:layout_constraintBottom_toTopOf="@id/shimmer_placeHolder_recommend"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvHomePopular" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_placeHolder_recommend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleRecommend">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHomeRecommend"
