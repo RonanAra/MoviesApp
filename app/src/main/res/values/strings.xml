@@ -15,5 +15,6 @@
     <string name="title_welcome_home">Watch your series and movies favorites!</string>
     <string name="tittle_latest">Recommend</string>
     <string name="label_similares">Similar Movies</string>
+    <string name="nothing_found_label">Nothing Found</string>
 
 </resources>
