@@ -12,11 +12,17 @@ class HomeApiRepository : BaseRepository() {
         }
     }
 
-
     suspend fun getRecommend(): ResponseApi {
         return safeApiCall {
             MoviesService.tmdbApi.listRecommended()
         }
     }
+
+    suspend fun getTopRated(): ResponseApi {
+        return safeApiCall {
+            MoviesService.tmdbApi.listTopRated()
+        }
+    }
+
 }
 

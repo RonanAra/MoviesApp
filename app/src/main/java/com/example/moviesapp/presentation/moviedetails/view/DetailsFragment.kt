@@ -17,7 +17,6 @@ import com.example.moviesapp.extensions.createToast
 import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 import com.example.moviesapp.presentation.moviedetails.adapter.SimilarAdapter
 import com.example.moviesapp.presentation.moviedetails.viewmodel.DetailsViewModel
-import com.example.moviesapp.presentation.search.view.SearchFragmentDirections
 import com.example.moviesapp.utils.Command
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -93,6 +92,7 @@ class DetailsFragment : Fragment() {
                     .error(R.drawable.place_holder)
                     .into(binding.ivDetailsImage)
 
+                binding.tvDetailsValueRatingMovie.text = movie.vote_average.toString()
                 binding.tvTitleDetails.text = movie.title
                 binding.tvOverview.text = movie.overview
             }

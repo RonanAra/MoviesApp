@@ -2,6 +2,7 @@ package com.example.moviesapp.data.database.dao
 
 import androidx.room.*
 import com.example.moviesapp.data.database.entity.MovieEntity
+import kotlin.coroutines.Continuation
 
 @Dao
 interface MovieFavoritesDao {

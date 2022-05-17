@@ -13,6 +13,7 @@ import com.example.moviesapp.R
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.presentation.home.adapter.PopularAdapter
+import com.example.moviesapp.presentation.home.adapter.RatedAdapter
 import com.example.moviesapp.presentation.home.adapter.RecommendAdapter
 import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
 import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
@@ -44,13 +45,40 @@ class HomeFragment : Fragment() {
 
         viewModel.command = command
         viewModel.getRecommend()
+        viewModel.getTopRated()
 
+        setupObservablesTop()
         setupObservablesPopular()
         setupRecyclerView()
         initButtons()
         setupObservablesRecommend()
         clickPopularAdapter()
 
+    }
+
+    private fun setupObservablesTop() {
+        viewModel.onSuccessTopRated.observe(viewLifecycleOwner) {
+            it?.let {
+                val adapterTopRated = RatedAdapter(listaMovies = it)
+
+                adapterTopRated.setMovieOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val direction =
+                            HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
+                        findNavController().navigate(direction)
+                    }
+                })
+                binding?.let {
+                    with(it) {
+                        rvHomeRated.apply {
+                            layoutManager =
+                                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                            adapter = adapterTopRated
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun setupObservablesRecommend() {
