@@ -3,6 +3,7 @@ package com.example.moviesapp.data.model
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
 import com.example.moviesapp.data.database.entity.MovieEntity
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -39,6 +40,7 @@ fun toEntity(movie: Movie): MovieEntity {
         title = movie.title,
         poster_path = movie.poster_path,
         overview = movie.overview,
-        backdrop_path = movie.backdrop_path
+        backdrop_path = movie.backdrop_path,
+        vote_average = movie.vote_average
         )
 }

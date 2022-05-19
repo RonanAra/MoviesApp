@@ -16,7 +16,9 @@ data class MovieEntity(
     @ColumnInfo(name = "posterPath")
     var poster_path: String?,
     @ColumnInfo(name = "title")
-    val title: String?
+    val title: String?,
+    @ColumnInfo(name = "vote_average")
+    val vote_average: String?
 )
 
 
@@ -29,6 +31,7 @@ fun toMovies(listMovies: List<MovieEntity>) : ArrayList<Movie> {
             movieFavoriteItem.overview,
             movieFavoriteItem.poster_path,
             movieFavoriteItem.title,
+            movieFavoriteItem.vote_average
         )
         listMovieFavorites.add(movieFavorite)
     }
