@@ -71,4 +71,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="ButtonStyle">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:backgroundTint">@color/primaryColor</item>
+    </style>
+
 </resources>
