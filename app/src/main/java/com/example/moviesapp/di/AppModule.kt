@@ -3,7 +3,7 @@ package com.example.moviesapp.di
 import androidx.room.Room
 import com.example.moviesapp.data.database.MovieDatabase
 import com.example.moviesapp.data.repository.api.DetailsApiRepository
-import com.example.moviesapp.data.repository.api.HomeApiRepository
+import com.example.moviesapp.data.repository.api.ApiRepository
 import com.example.moviesapp.data.repository.api.SearchApiRepository
 import com.example.moviesapp.data.repository.database.MovieDaoRepositoryImp
 import com.example.moviesapp.domain.usecase.DetailsUseCase
@@ -11,6 +11,8 @@ import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.domain.usecase.SearchUseCase
 import com.example.moviesapp.presentation.bookmarks.viewmodel.BookViewModel
 import com.example.moviesapp.presentation.home.paging.HomePagingSource
+import com.example.moviesapp.presentation.home.paging.RecommendPagingSource
+import com.example.moviesapp.presentation.home.paging.TopRatedPagingSource
 import com.example.moviesapp.presentation.home.viewmodel.HomeViewModel
 import com.example.moviesapp.presentation.moviedetails.viewmodel.DetailsViewModel
 import com.example.moviesapp.presentation.search.viewmodel.SearchViewModel
@@ -33,7 +35,7 @@ object AppModule {
 
 
     val appModule = module {
-        single { HomeApiRepository() }
+        single { ApiRepository() }
         single { SearchApiRepository() }
         single { DetailsApiRepository() }
 
@@ -45,16 +47,13 @@ object AppModule {
         single { SearchUseCase(searchRepository = get()) }
         single { DetailsUseCase(similarRepository = get()) }
 
-        single {
-            HomePagingSource(
-                homeRepository = get(),
-                homeUseCase = get()
-            )
-        }
+        single { HomePagingSource(repository = get(), homeUseCase = get()) }
+        single { RecommendPagingSource(repository = get(), homeUseCase = get()) }
+        single { TopRatedPagingSource(repository = get(), homeUseCase = get()) }
 
         viewModel { BookViewModel(movieDaoRepository = get()) }
         viewModel { DetailsViewModel(detailsDaoRepository = get(), similarUseCase = get()) }
-        viewModel { HomeViewModel(homeUseCase = get(), homeRepository = get()) }
+        viewModel { HomeViewModel(homeUseCase = get(), repository = get()) }
         viewModel { SearchViewModel(searchUseCase = get())}
     }
 }

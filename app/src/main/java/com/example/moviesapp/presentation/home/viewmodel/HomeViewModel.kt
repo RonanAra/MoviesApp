@@ -1,75 +1,72 @@
 package com.example.moviesapp.presentation.home.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.moviesapp.data.repository.api.HomeApiRepository
+import com.example.moviesapp.data.repository.api.ApiRepository
 import com.example.moviesapp.presentation.base.BaseViewModel
 import com.example.moviesapp.presentation.home.paging.HomePagingSource
 import com.example.moviesapp.domain.usecase.HomeUseCase
 import com.example.moviesapp.data.model.Movie
+import com.example.moviesapp.presentation.home.paging.RecommendPagingSource
+import com.example.moviesapp.presentation.home.paging.TopRatedPagingSource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val homeRepository: HomeApiRepository,
+    private val repository: ApiRepository,
     private val homeUseCase: HomeUseCase,
 ) : BaseViewModel() {
 
-    private val _onSuccesRecommend: MutableLiveData<List<Movie>> = MutableLiveData()
-    val onSuccessRecommend: LiveData<List<Movie>>
-        get() = _onSuccesRecommend
 
-    private val _onSuccesTopRated: MutableLiveData<List<Movie>> = MutableLiveData()
-    val onSuccessTopRated: LiveData<List<Movie>>
-        get() = _onSuccesTopRated
-
-
-    private var mPagingData: Flow<PagingData<Movie>>? = null;
+    private var popularPagingData: Flow<PagingData<Movie>>? = null;
+    private var topPagingData: Flow<PagingData<Movie>>? = null;
+    private var recommendPagingData: Flow<PagingData<Movie>>? = null;
 
     fun getPopular(): Flow<PagingData<Movie>> {
-        if (mPagingData != null) return mPagingData as Flow<PagingData<Movie>>
+        if (popularPagingData != null) return popularPagingData as Flow<PagingData<Movie>>
         else
-            mPagingData = Pager(config = PagingConfig(pageSize = 20),
+            popularPagingData = Pager(config = PagingConfig(pageSize = 20),
                 pagingSourceFactory = {
                     HomePagingSource(
-                        homeRepository,
+                        repository,
                         homeUseCase
                     )
                 }).flow.cachedIn(
                 viewModelScope
             )
-        return mPagingData as Flow<PagingData<Movie>>
+        return popularPagingData as Flow<PagingData<Movie>>
     }
 
-    fun getRecommend() {
-        viewModelScope.launch {
-            callApi(
-                suspend { homeUseCase.getRecommend() },
-                onSuccess = {
-                    val result = it as? List<*>
-                    _onSuccesRecommend.postValue(
-                        result?.filterIsInstance<Movie>()
+    fun getRecommend(): Flow<PagingData<Movie>> {
+        if (recommendPagingData != null) return recommendPagingData as Flow<PagingData<Movie>>
+        else
+            recommendPagingData = Pager(config = PagingConfig(pageSize = 20),
+                pagingSourceFactory = {
+                    RecommendPagingSource(
+                        repository,
+                        homeUseCase
                     )
-                })
-        }
+                }).flow.cachedIn(
+                viewModelScope
+            )
+        return recommendPagingData as Flow<PagingData<Movie>>
     }
 
-    fun getTopRated() {
-        viewModelScope.launch {
-            callApi(
-                suspend { homeUseCase.getTopRated() },
-                onSuccess = {
-                    val result = it as? List<*>
-                    _onSuccesTopRated.postValue(
-                        result?.filterIsInstance<Movie>()
+    fun getTopRated(): Flow<PagingData<Movie>> {
+        if (topPagingData != null) return topPagingData as Flow<PagingData<Movie>>
+        else
+            topPagingData = Pager(config = PagingConfig(pageSize = 20),
+                pagingSourceFactory = {
+                    TopRatedPagingSource(
+                        repository,
+                        homeUseCase
                     )
-                })
-        }
+                }).flow.cachedIn(
+                viewModelScope
+            )
+        return topPagingData as Flow<PagingData<Movie>>
     }
 }
 

@@ -23,7 +23,9 @@ interface TmdbApi {
     ): Response<MovieResult>
 
     @GET("movie/upcoming")
-    suspend fun listRecommended(): Response<RecommendResult>
+    suspend fun listRecommended(
+        @Query("page") page: Int
+    ): Response<RecommendResult>
 
     @GET("movie/{movie_id}/similar")
     suspend fun listSimilar(
@@ -32,6 +34,8 @@ interface TmdbApi {
 
 
     @GET("movie/top_rated")
-    suspend fun listTopRated(): Response<MovieTopRated>
+    suspend fun listTopRated(
+        @Query("page") page: Int
+    ): Response<MovieTopRated>
 
 }

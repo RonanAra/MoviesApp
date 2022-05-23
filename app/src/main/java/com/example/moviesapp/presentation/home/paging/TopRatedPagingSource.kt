@@ -4,13 +4,11 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.moviesapp.data.repository.api.ApiRepository
 import com.example.moviesapp.domain.usecase.HomeUseCase
-import com.example.moviesapp.data.model.MovieResult
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.data.model.MovieTopRated
-import com.example.moviesapp.data.model.RecommendResult
 import com.example.moviesapp.utils.ResponseApi
 
-class HomePagingSource(
+class TopRatedPagingSource(
     private val repository: ApiRepository,
     private val homeUseCase: HomeUseCase
 ) : PagingSource<Int, Movie>() {
@@ -23,7 +21,7 @@ class HomePagingSource(
 
         return try {
             val page: Int = params.key ?: 1
-            val response = callPopularApi(page)
+            val response = callTopRatedApi(page)
 
             LoadResult.Page(
                 data = response,
@@ -36,13 +34,14 @@ class HomePagingSource(
         }
     }
 
-    private suspend fun callPopularApi(page: Int): List<Movie> {
+
+    private suspend fun callTopRatedApi(page: Int): List<Movie> {
         return when (
-            val response = repository.getPopular(page)
+            val response = repository.getTopRated(page)
         ) {
             is ResponseApi.Success -> {
-                val list = response.data as? MovieResult
-                homeUseCase.setupMoviesList(list)
+                val list = response.data as? MovieTopRated
+                homeUseCase.setupTopRated(list)
             }
             is ResponseApi.Error -> {
                 listOf()

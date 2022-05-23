@@ -4,7 +4,7 @@ import com.example.moviesapp.presentation.base.BaseRepository
 import com.example.moviesapp.data.retrofit.MoviesService
 import com.example.moviesapp.utils.ResponseApi
 
-class HomeApiRepository : BaseRepository() {
+class ApiRepository : BaseRepository() {
 
     suspend fun getPopular(page: Int): ResponseApi {
         return safeApiCall {
@@ -12,15 +12,15 @@ class HomeApiRepository : BaseRepository() {
         }
     }
 
-    suspend fun getRecommend(): ResponseApi {
+    suspend fun getRecommend(page: Int): ResponseApi {
         return safeApiCall {
-            MoviesService.tmdbApi.listRecommended()
+            MoviesService.tmdbApi.listRecommended(page)
         }
     }
 
-    suspend fun getTopRated(): ResponseApi {
+    suspend fun getTopRated(page: Int): ResponseApi {
         return safeApiCall {
-            MoviesService.tmdbApi.listTopRated()
+            MoviesService.tmdbApi.listTopRated(page)
         }
     }
 

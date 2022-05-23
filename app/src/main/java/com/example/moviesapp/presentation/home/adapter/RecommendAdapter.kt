@@ -2,6 +2,7 @@ package com.example.moviesapp.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.data.model.Movie
@@ -9,9 +10,7 @@ import com.example.moviesapp.databinding.ItemListHorizontalMoviesBinding
 import com.example.moviesapp.presentation.interfaces.MovieOnClickListener
 
 
-class RecommendAdapter(
-    private val listaMovies: List<Movie>
-) : RecyclerView.Adapter<RecommendAdapter.ViewHolder>() {
+class RecommendAdapter() : PagingDataAdapter<Movie,RecommendAdapter.ViewHolder>(Movie.DIFF_CALLBACK)  {
 
     private lateinit var movieOnClickListener: MovieOnClickListener
 
@@ -32,10 +31,10 @@ class RecommendAdapter(
     }
 
     override fun onBindViewHolder(holder: RecommendAdapter.ViewHolder, position: Int) {
-        holder.bind(listaMovies[position], movieOnClickListener)
+        holder.bind(getItem(position), movieOnClickListener)
     }
 
-    override fun getItemCount(): Int = listaMovies.size
+
 
     class ViewHolder(val binding: ItemListHorizontalMoviesBinding) :
         RecyclerView.ViewHolder(binding.root) {

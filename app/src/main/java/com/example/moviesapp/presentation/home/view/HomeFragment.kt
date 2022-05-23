@@ -28,7 +28,8 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModel()
     var command: MutableLiveData<Command> = MutableLiveData()
     private val popularAdapter = PopularAdapter()
-
+    private val adapterTopRated = RatedAdapter()
+    private val recommendAdapter = RecommendAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +45,6 @@ class HomeFragment : Fragment() {
 
 
         viewModel.command = command
-        viewModel.getRecommend()
-        viewModel.getTopRated()
 
         setupObservablesTop()
         setupObservablesPopular()
@@ -57,9 +56,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupObservablesTop() {
-        viewModel.onSuccessTopRated.observe(viewLifecycleOwner) {
-            it?.let {
-                val adapterTopRated = RatedAdapter(listaMovies = it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getTopRated().collect { pagingData ->
+                adapterTopRated.submitData(viewLifecycleOwner.lifecycle, pagingData)
 
                 adapterTopRated.setMovieOnClickListener(object : MovieOnClickListener {
                     override fun onItemClick(movie: Movie) {
@@ -68,41 +67,23 @@ class HomeFragment : Fragment() {
                         findNavController().navigate(direction)
                     }
                 })
-                binding?.let {
-                    with(it) {
-                        rvHomeRated.apply {
-                            layoutManager =
-                                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                            adapter = adapterTopRated
-                        }
-                    }
-                }
             }
         }
     }
 
     private fun setupObservablesRecommend() {
-        viewModel.onSuccessRecommend.observe(viewLifecycleOwner) { listMovies ->
-            val recommendAdapter = RecommendAdapter(
-                listaMovies = listMovies
-            )
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getRecommend().collect { pagingData ->
+                recommendAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
 
-            recommendAdapter.setMovieOnClickListener(object : MovieOnClickListener {
-                override fun onItemClick(movie: Movie) {
-                    val direction =
-                        HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
-                    findNavController().navigate(direction)
-                }
-            })
-
-            binding?.let {
-                with(it) {
-                    rvHomeRecommend.apply {
-                        layoutManager =
-                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                        adapter = recommendAdapter
+                recommendAdapter.setMovieOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val direction =
+                            HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
+                        findNavController().navigate(direction)
                     }
-                }
+                })
+
             }
         }
     }
@@ -132,6 +113,16 @@ class HomeFragment : Fragment() {
         binding?.rvHomePopular?.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = popularAdapter
+        }
+
+        binding?.rvHomeRated?.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adapterTopRated
+        }
+
+        binding?.rvHomeRecommend?.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = recommendAdapter
         }
     }
 
