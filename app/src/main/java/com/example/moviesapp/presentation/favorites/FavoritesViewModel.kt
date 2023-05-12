@@ -1,4 +1,4 @@
-package com.example.moviesapp.presentation.bookmarks.viewmodel
+package com.example.moviesapp.presentation.favorites
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.data.repository.database.MovieDaoRepositoryImp
 import kotlinx.coroutines.launch
 
-class BookViewModel(
+class FavoritesViewModel(
     private val movieDaoRepository: MovieDaoRepositoryImp
 ) : ViewModel() {
 

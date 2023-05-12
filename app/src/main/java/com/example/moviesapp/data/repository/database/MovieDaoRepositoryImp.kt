@@ -1,7 +1,6 @@
 package com.example.moviesapp.data.repository.database
 
 import com.example.moviesapp.data.database.dao.MovieFavoritesDao
-import com.example.moviesapp.data.database.entity.toMovies
 import com.example.moviesapp.data.model.Movie
 import com.example.moviesapp.data.model.toEntity
 
@@ -17,7 +16,7 @@ class MovieDaoRepositoryImp(
         movieFavoritesDao.delete(toEntity(movie))
     }
 
-    suspend fun getAllMovieFavorites(): ArrayList<Movie> {
-        return toMovies(movieFavoritesDao.getAll())
+    suspend fun getAllMovieFavorites(): List<Movie> {
+       return movieFavoritesDao.getAll()
     }
 }

@@ -1,8 +1,7 @@
 package com.example.moviesapp.data.retrofit
 
-
 import androidx.viewbinding.BuildConfig
-import com.example.moviesapp.data.api.TmdbApi
+import com.example.moviesapp.data.service.MoviesService
 import com.example.moviesapp.utils.ConstantsApp.Api.API_TOKEN
 import com.example.moviesapp.utils.ConstantsApp.Api.API_TOKEN_KEY
 import com.example.moviesapp.utils.ConstantsApp.Api.BASE_URL
@@ -16,7 +15,7 @@ import java.util.concurrent.TimeUnit
 
 object MoviesService {
 
-    val tmdbApi: TmdbApi = getTmdbApiClient().create(TmdbApi::class.java)
+    val moviesService: MoviesService = getTmdbApiClient().create(MoviesService::class.java)
 
     fun getTmdbApiClient(): Retrofit {
         return Retrofit.Builder()

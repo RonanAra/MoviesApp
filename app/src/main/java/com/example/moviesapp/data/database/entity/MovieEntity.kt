@@ -20,20 +20,3 @@ data class MovieEntity(
     @ColumnInfo(name = "vote_average")
     val vote_average: String?
 )
-
-
-fun toMovies(listMovies: List<MovieEntity>) : ArrayList<Movie> {
-    val listMovieFavorites = ArrayList<Movie>()
-    for (movieFavoriteItem in listMovies) {
-        val movieFavorite = Movie(
-            movieFavoriteItem.id,
-            movieFavoriteItem.backdrop_path,
-            movieFavoriteItem.overview,
-            movieFavoriteItem.poster_path,
-            movieFavoriteItem.title,
-            movieFavoriteItem.vote_average
-        )
-        listMovieFavorites.add(movieFavorite)
-    }
-    return listMovieFavorites
-}

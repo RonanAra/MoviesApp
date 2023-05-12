@@ -1,41 +1,36 @@
-package com.example.moviesapp.data.api
-
+package com.example.moviesapp.data.service
 
 import android.app.SearchManager
 import com.example.moviesapp.data.model.MovieResult
 import com.example.moviesapp.data.model.MovieSimilarResults
 import com.example.moviesapp.data.model.MovieTopRated
 import com.example.moviesapp.data.model.RecommendResult
-import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
-interface TmdbApi {
+interface MoviesService {
 
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int
-    ): Response<MovieResult>
+    ): MovieResult
 
     @GET("search/movie")
     suspend fun getSearchMovie(
         @Query(SearchManager.QUERY) searchMovie: String
-    ): Response<MovieResult>
+    ): MovieResult
 
     @GET("movie/upcoming")
-    suspend fun listRecommended(
+    suspend fun getRecommended(
         @Query("page") page: Int
-    ): Response<RecommendResult>
+    ): RecommendResult
 
     @GET("movie/{movie_id}/similar")
-    suspend fun listSimilar(
+    suspend fun getSimilar(
         @Path("movie_id") movieId: Int
-    ): Response<MovieSimilarResults>
-
+    ): MovieSimilarResults
 
     @GET("movie/top_rated")
-    suspend fun listTopRated(
+    suspend fun getTopRated(
         @Query("page") page: Int
-    ): Response<MovieTopRated>
-
+    ): MovieTopRated
 }
