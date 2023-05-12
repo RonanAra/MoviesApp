@@ -11,10 +11,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="@dimen/margin_default">
 
         <ImageButton
-            android:id="@+id/ib_details_back"
+            android:id="@+id/btn_details_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTitleDetails"
+            android:id="@+id/details_title"
             style="@style/TextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,28 +33,28 @@
             android:maxLines="1"
             android:textAlignment="textStart"
             android:textAllCaps="true"
-            android:textSize="24sp"
+            android:textSize="@dimen/text_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/ib_details_back"
-            app:layout_constraintEnd_toStartOf="@id/iv_details_icon_rating"
-            app:layout_constraintStart_toEndOf="@id/ib_details_back"
+            app:layout_constraintBottom_toBottomOf="@id/btn_details_back"
+            app:layout_constraintEnd_toStartOf="@id/ic_details_rating"
+            app:layout_constraintStart_toEndOf="@id/btn_details_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_details_icon_rating"
+            android:id="@+id/ic_details_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/margin_half"
             android:src="@drawable/ic_star"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_details_value_rating_movie"
-            app:layout_constraintEnd_toStartOf="@+id/tv_details_value_rating_movie"
-            app:layout_constraintTop_toTopOf="@+id/tv_details_value_rating_movie" />
+            app:layout_constraintBottom_toBottomOf="@+id/details_rating_value"
+            app:layout_constraintEnd_toStartOf="@+id/details_rating_value"
+            app:layout_constraintTop_toTopOf="@+id/details_rating_value" />
 
         <TextView
-            android:id="@+id/tv_details_value_rating_movie"
+            android:id="@+id/details_rating_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#F0C21F"
+            android:textColor="@color/color_rating_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="5.5" />
@@ -70,87 +70,75 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivDetailsImage"
+                android:id="@+id/details_img"
                 android:layout_width="0dp"
-                android:layout_height="270dp"
+                android:layout_height="@dimen/details_img_height"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
-                android:id="@+id/tvOverview"
+                android:id="@+id/details_overview"
                 style="@style/TextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/rubik_light"
-                android:gravity="fill|fill_horizontal"
-                android:justificationMode="inter_word"
-                android:textSize="14sp"
+                android:layout_margin="@dimen/margin_default"
+                android:textSize="@dimen/small_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivDetailsImage"
+                app:layout_constraintTop_toBottomOf="@id/details_img"
                 tools:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." />
 
             <TextView
-                android:id="@+id/tv_details_similar_movies"
+                android:id="@+id/details_similar_movies_title"
                 style="@style/TitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_margin="@dimen/margin_default"
                 android:text="@string/label_similares"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_linear_details_my_list" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_favorites_container" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcy_details_similar_movies"
                 style="@style/RecyclerViewStyle"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/margin_half"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_details_similar_movies" />
+                app:layout_constraintTop_toBottomOf="@+id/details_similar_movies_title" />
 
             <LinearLayout
-                android:id="@+id/btn_linear_details_my_list"
+                android:id="@+id/btn_favorites_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:padding="@dimen/margin_default"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvOverview">
+                app:layout_constraintTop_toBottomOf="@+id/details_overview">
 
                 <ImageView
-                    android:id="@+id/iv_details_icon_my_list"
+                    android:id="@+id/favorites_ic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_favorite_border_24px" />
 
                 <TextView
-                    android:id="@+id/tv_details_title_book_list"
+                    android:id="@+id/favorites_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/opensans_semibold"
+                    android:fontFamily="@font/open_sans_semi_bold"
                     android:text="@string/label_details_my_list"
                     android:textColor="@color/textColor" />
+
             </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
 </LinearLayout>

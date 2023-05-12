@@ -8,7 +8,7 @@
     tools:context=".presentation.home.HomeFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/home_toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,16 +16,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/ib_search"
+            android:id="@+id/home_btn_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:contentDescription="@string/title_menu_home_search"
-            android:padding="8dp"
+            android:padding="@dimen/margin_half"
             android:src="@drawable/ic_search" />
 
         <Button
-            android:id="@+id/ib_favorite"
+            android:id="@+id/home_btn_favorite"
             style="@style/ButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/home_toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,18 +51,19 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/ivHome"
+                android:id="@+id/home_img"
                 android:layout_width="wrap_content"
-                android:layout_height="330dp"
+                android:layout_height="@dimen/home_img_height"
                 android:foreground="@drawable/foreground_header_home"
                 android:scaleType="centerCrop"
                 android:src="@drawable/home"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+                app:layout_constraintTop_toBottomOf="@id/home_toolbar"
+                tools:ignore="UnusedAttribute" />
 
             <TextView
-                android:id="@+id/titlePopular"
+                android:id="@+id/home_title_popular"
                 style="@style/TitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,59 +71,51 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/title_popular_movies_home"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivHome" />
+                app:layout_constraintTop_toBottomOf="@+id/home_img" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHomePopular"
+                android:id="@+id/rv_home_popular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_margin="@dimen/margin_half"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titlePopular" />
+                app:layout_constraintTop_toBottomOf="@id/home_title_popular" />
 
             <TextView
-                android:id="@+id/titleRecommend"
+                android:id="@+id/home_title_recommend"
                 style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_margin="@dimen/margin_half"
                 android:text="@string/tittle_latest"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvHomePopular" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_home_popular" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHomeRecommend"
+                android:id="@+id/rv_home_recommend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_margin="@dimen/margin_half"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleRecommend" />
+                app:layout_constraintTop_toBottomOf="@id/home_title_recommend" />
 
             <TextView
                 android:id="@+id/titleRated"
                 style="@style/TitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Top Rated"
+                android:layout_margin="@dimen/margin_half"
+                android:text="@string/top_rated_title"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvHomeRecommend" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_home_recommend" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHomeRated"
+                android:id="@+id/rv_home_top_rated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_margin="@dimen/margin_half"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titleRated" />

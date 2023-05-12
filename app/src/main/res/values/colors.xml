@@ -17,4 +17,5 @@
     <color name="primaryColor">#0b0b0b</color>
     <color name="TertiaryLightColor">#929292</color>
     <color name="shimmer_color">#919090</color>
+    <color name="color_rating_text">#F0C21F</color>
 </resources>

@@ -1,17 +1,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/LayoutStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/searchView"
+        android:id="@+id/search_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="@dimen/margin_half"
         android:clipToPadding="false"
         android:textColorHint="@color/TertiaryLightColor"
         app:hintAnimationEnabled="false"
@@ -23,16 +20,15 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="@dimen/search_input_height"
             android:background="@color/TertiaryColor"
             android:backgroundTint="@color/white"
-            android:fontFamily="@font/opensans_semibold"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:gravity="fill_horizontal|fill_vertical"
             android:hint="@string/hint_search_text_input_layout"
             android:imeOptions="actionDone"
-            android:lineSpacingExtra="8sp"
-            android:padding="8dp"
-            android:textSize="13sp" />
+            android:lineSpacingExtra="8sp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -40,28 +36,25 @@
         style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:text="@string/nothing_found_label"
         android:textColor="@color/TertiaryLightColor"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView" />
+        app:layout_constraintTop_toBottomOf="@id/search_input" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSearchMovies"
+        android:id="@+id/rv_search_movies"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="@dimen/margin_half"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintTop_toBottomOf="@id/search_input"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

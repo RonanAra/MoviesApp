@@ -11,10 +11,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="@dimen/margin_default">
 
         <ImageButton
-            android:id="@+id/ib_my_list_back"
+            android:id="@+id/favorites_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -23,23 +23,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_details_title_movie"
+            android:id="@+id/favorite_title"
             style="@style/TitleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/title_my_list"
             android:textAllCaps="true"
-            app:layout_constraintBottom_toBottomOf="@+id/ib_my_list_back"
+            app:layout_constraintBottom_toBottomOf="@+id/favorites_btn_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ib_my_list_back"
-            app:layout_constraintTop_toTopOf="@+id/ib_my_list_back" />
+            app:layout_constraintStart_toEndOf="@+id/favorites_btn_back"
+            app:layout_constraintTop_toTopOf="@+id/favorites_btn_back" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcy_my_list_favorites"
+        android:id="@+id/rcy_list_favorites"
         style="@style/RecyclerViewStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,34 +46,34 @@
         tools:listitem="@layout/item_list_horizontal_movies" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_started"
+        android:id="@+id/favorite_place_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <ImageView
-            android:id="@+id/iv_stared_search"
+            android:id="@+id/favorite_place_holder_img"
             android:layout_width="0dp"
-            android:layout_height="330dp"
-            android:layout_marginTop="48dp"
+            android:layout_height="@dimen/place_holder_img_height"
+            android:layout_marginTop="@dimen/margin_triple"
             android:src="@drawable/details_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title_started"
+            android:id="@+id/favorite_place_holder_title"
             style="@style/TitleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="48dp"
+            android:layout_margin="@dimen/margin_half_quarter"
             android:text="@string/title_started_search"
             android:textAlignment="center"
             android:textSize="@dimen/size_24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_stared_search" />
+            app:layout_constraintTop_toBottomOf="@+id/favorite_place_holder_img" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

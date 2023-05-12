@@ -16,5 +16,6 @@
     <string name="tittle_latest">Recommend</string>
     <string name="label_similares">Similar Movies</string>
     <string name="nothing_found_label">Nothing Found</string>
+    <string name="top_rated_title">Top Rated</string>
 
 </resources>
