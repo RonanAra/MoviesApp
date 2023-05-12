@@ -25,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:background="@color/TertiaryColor"
-            android:fontFamily="@font/opensans_semibold"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/opensans_semibold"
             android:gravity="fill_horizontal|fill_vertical"
             android:hint="@string/hint_search_text_input_layout"
             android:imeOptions="actionDone"
@@ -62,7 +62,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchView"
-        app:layout_constraintVertical_bias="1.0"
-         />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

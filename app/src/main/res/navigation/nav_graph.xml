@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.moviesapp.presentation.home.view.HomeFragment"
+        android:name="com.example.moviesapp.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.moviesapp.presentation.moviedetails.view.DetailsFragment"
+        android:name="com.example.moviesapp.presentation.moviedetails.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.moviesapp.presentation.search.view.SearchFragment"
+        android:name="com.example.moviesapp.presentation.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookFragment"
-        android:name="com.example.moviesapp.presentation.bookmarks.view.BookFragment"
+        android:name="com.example.moviesapp.presentation.favorites.FavoritesFragment"
         android:label="fragment_book"
         tools:layout="@layout/fragment_book" >
         <action

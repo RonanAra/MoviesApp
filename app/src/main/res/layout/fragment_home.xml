@@ -5,8 +5,7 @@
     style="@style/LayoutStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.view.HomeFragment">
-
+    tools:context=".presentation.home.HomeFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -62,7 +61,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-
             <TextView
                 android:id="@+id/titlePopular"
                 style="@style/TitleStyle"
@@ -73,7 +71,6 @@
                 android:text="@string/title_popular_movies_home"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivHome" />
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomePopular"
@@ -97,7 +94,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvHomePopular" />
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeRecommend"
                 android:layout_width="match_parent"
@@ -120,7 +116,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvHomeRecommend" />
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeRated"
                 android:layout_width="match_parent"
@@ -133,10 +128,5 @@
                 app:layout_constraintTop_toBottomOf="@id/titleRated" />
 
         </LinearLayout>
-
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
