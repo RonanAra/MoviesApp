@@ -1,7 +1,7 @@
-package com.example.moviesapp.data.database.dao
+package com.example.moviesapp.data.local.database.dao
 
 import androidx.room.*
-import com.example.moviesapp.data.database.entity.MovieEntity
+import com.example.moviesapp.data.local.database.entity.MovieEntity
 import kotlin.coroutines.Continuation
 
 @Dao

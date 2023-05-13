@@ -1,10 +1,7 @@
-package com.example.moviesapp.data.service
+package com.example.moviesapp.data.remote
 
 import android.app.SearchManager
-import com.example.moviesapp.data.model.MovieResult
-import com.example.moviesapp.data.model.MovieSimilarResults
-import com.example.moviesapp.data.model.MovieTopRated
-import com.example.moviesapp.data.model.RecommendResult
+import com.example.moviesapp.data.remote.models.ListMoviesResponse
 import retrofit2.http.*
 
 interface MoviesService {
@@ -12,25 +9,25 @@ interface MoviesService {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int
-    ): MovieResult
+    ): ListMoviesResponse
 
     @GET("search/movie")
     suspend fun getSearchMovie(
         @Query(SearchManager.QUERY) searchMovie: String
-    ): MovieResult
+    ): ListMoviesResponse
 
     @GET("movie/upcoming")
     suspend fun getRecommended(
         @Query("page") page: Int
-    ): RecommendResult
+    ): ListMoviesResponse
 
     @GET("movie/{movie_id}/similar")
     suspend fun getSimilar(
         @Path("movie_id") movieId: Int
-    ): MovieSimilarResults
+    ): ListMoviesResponse
 
     @GET("movie/top_rated")
     suspend fun getTopRated(
         @Query("page") page: Int
-    ): MovieTopRated
+    ): ListMoviesResponse
 }

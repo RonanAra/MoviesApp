@@ -1,10 +1,10 @@
-package com.example.moviesapp.data.database
+package com.example.moviesapp.data.local.database
 
 import androidx.room.*
 import androidx.room.migration.AutoMigrationSpec
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.moviesapp.data.database.dao.MovieFavoritesDao
-import com.example.moviesapp.data.database.entity.MovieEntity
+import com.example.moviesapp.data.local.database.dao.MovieFavoritesDao
+import com.example.moviesapp.data.local.database.entity.MovieEntity
 
 @Database(
     version = 2,

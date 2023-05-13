@@ -1,9 +1,8 @@
-package com.example.moviesapp.data.database.entity
+package com.example.moviesapp.data.local.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.moviesapp.data.model.Movie
 
 @Entity(tableName = "moviesDb")
 data class MovieEntity(

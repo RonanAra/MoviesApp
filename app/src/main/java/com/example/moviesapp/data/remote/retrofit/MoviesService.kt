@@ -1,7 +1,7 @@
-package com.example.moviesapp.data.retrofit
+package com.example.moviesapp.data.remote.retrofit
 
 import androidx.viewbinding.BuildConfig
-import com.example.moviesapp.data.service.MoviesService
+import com.example.moviesapp.data.remote.MoviesService
 import com.example.moviesapp.utils.ConstantsApp.Api.API_TOKEN
 import com.example.moviesapp.utils.ConstantsApp.Api.API_TOKEN_KEY
 import com.example.moviesapp.utils.ConstantsApp.Api.BASE_URL
