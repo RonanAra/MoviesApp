@@ -1,6 +1,6 @@
 package com.example.moviesapp.data.remote.datasource
 
-import com.example.moviesapp.data.remote.MoviesService
+import com.example.moviesapp.data.remote.service.MoviesService
 import com.example.moviesapp.data.remote.models.ListMoviesResponse
 
 interface MoviesDataSource {

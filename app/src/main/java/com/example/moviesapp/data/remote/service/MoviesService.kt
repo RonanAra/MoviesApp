@@ -1,4 +1,4 @@
-package com.example.moviesapp.data.remote
+package com.example.moviesapp.data.remote.service
 
 import android.app.SearchManager
 import com.example.moviesapp.data.remote.models.ListMoviesResponse
