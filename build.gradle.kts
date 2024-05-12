@@ -4,10 +4,14 @@ buildscript {
             google()
             mavenCentral()
         }
-        classpath("com.android.tools.build:gradle:8.0.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.50")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1")
+        val navigationVersion by extra("2.8.0-alpha08")
+        val hiltVersion by extra("2.50")
+        val kotlinVersion by extra("1.9.23")
+        val gradleVersion by extra("8.0.2")
+        classpath("com.android.tools.build:gradle:$gradleVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion")
     }
 }
 

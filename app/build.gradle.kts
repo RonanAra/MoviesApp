@@ -40,6 +40,10 @@ android {
         compose = true
         buildConfig = true
     }
+
+    kotlin {
+        jvmToolchain(17)
+    }
 }
 
 dependencies {
