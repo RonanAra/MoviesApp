@@ -1,4 +1,4 @@
-package com.example.moviesapp.data.local.models
+package com.example.moviesapp.domain.models
 
 import java.io.Serializable
 

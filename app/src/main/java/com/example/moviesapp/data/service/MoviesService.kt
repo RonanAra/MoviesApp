@@ -1,7 +1,7 @@
-package com.example.moviesapp.data.remote.service
+package com.example.moviesapp.data.service
 
 import android.app.SearchManager
-import com.example.moviesapp.data.remote.models.ListMoviesResponse
+import com.example.moviesapp.data.models.ListMoviesResponse
 import retrofit2.http.*
 
 interface MoviesService {

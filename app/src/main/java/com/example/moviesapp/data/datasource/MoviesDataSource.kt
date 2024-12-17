@@ -1,7 +1,7 @@
-package com.example.moviesapp.data.remote.datasource
+package com.example.moviesapp.data.datasource
 
-import com.example.moviesapp.data.remote.service.MoviesService
-import com.example.moviesapp.data.remote.models.ListMoviesResponse
+import com.example.moviesapp.data.service.MoviesService
+import com.example.moviesapp.data.models.ListMoviesResponse
 
 interface MoviesDataSource {
     suspend fun getPopular(page: Int): ListMoviesResponse
