@@ -3,12 +3,12 @@ package com.example.moviesapp.data.models
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class ListMoviesResponse(
+data class MoviesResponse(
     val page: Int,
-    val results: List<MoviesResponse>
+    val results: List<MovieItemResponse>
 ) : Serializable
 
-data class MoviesResponse(
+data class MovieItemResponse(
     val id: Int,
     @SerializedName("backdrop_path") var backdropPath: String,
     val overview: String,

@@ -1,37 +1,37 @@
 package com.example.moviesapp.data.datasource
 
+import com.example.moviesapp.data.models.MoviesResponse
 import com.example.moviesapp.data.service.MoviesService
-import com.example.moviesapp.data.models.ListMoviesResponse
 
 interface MoviesDataSource {
-    suspend fun getPopular(page: Int): ListMoviesResponse
-    suspend fun getRecommend(page: Int): ListMoviesResponse
-    suspend fun getTopRated(page: Int): ListMoviesResponse
-    suspend fun getSimilar(movieId: Int): ListMoviesResponse
-    suspend fun search(titleMovie: String): ListMoviesResponse
+    suspend fun getPopular(page: Int): MoviesResponse
+    suspend fun getRecommend(page: Int): MoviesResponse
+    suspend fun getTopRated(page: Int): MoviesResponse
+    suspend fun getSimilar(movieId: Int): MoviesResponse
+    suspend fun search(titleMovie: String): MoviesResponse
 }
 
 class MoviesDataSourceImpl(
     private val service: MoviesService
 ) : MoviesDataSource {
 
-    override suspend fun getPopular(page: Int): ListMoviesResponse {
+    override suspend fun getPopular(page: Int): MoviesResponse {
         return service.getPopularMovies(page)
     }
 
-    override suspend fun getRecommend(page: Int): ListMoviesResponse {
-        return service.getRecommended(page)
+    override suspend fun getRecommend(page: Int): MoviesResponse {
+        return service.getRecommendedMovies(page)
     }
 
-    override suspend fun getTopRated(page: Int): ListMoviesResponse {
-        return service.getTopRated(page)
+    override suspend fun getTopRated(page: Int): MoviesResponse {
+        return service.getTopRatedMovies(page)
     }
 
-    override suspend fun getSimilar(movieId: Int): ListMoviesResponse {
-        return service.getSimilar(movieId)
+    override suspend fun getSimilar(movieId: Int): MoviesResponse {
+        return service.getSimilarMovies(movieId)
     }
 
-    override suspend fun search(titleMovie: String): ListMoviesResponse {
-        return service.getSearchMovie(titleMovie)
+    override suspend fun search(titleMovie: String): MoviesResponse {
+        return service.getSearchMovies(titleMovie)
     }
 }
