@@ -45,4 +45,6 @@
     <dimen name="search_input_height">36dp</dimen>
     <dimen name="card_movies_width">96dp</dimen>
     <dimen name="card_movies_height">150dp</dimen>
+    <dimen name="search_card_view_width">175dp</dimen>
+    <dimen name="search_card_view_height">125dp</dimen>
 </resources>
