@@ -8,9 +8,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/search_card"
         style="@style/CardStyle"
-        android:layout_width="175dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="@dimen/search_card_view_width"
+        android:layout_height="@dimen/search_card_view_height"
+        android:layout_marginStart="@dimen/margin_half"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
