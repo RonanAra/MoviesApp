@@ -2,6 +2,7 @@ package com.example.moviesapp.data.datasource
 
 import com.example.moviesapp.data.models.MoviesResponse
 import com.example.moviesapp.data.service.MoviesService
+import javax.inject.Inject
 
 interface MoviesDataSource {
     suspend fun getPopular(page: Int): MoviesResponse
@@ -11,7 +12,7 @@ interface MoviesDataSource {
     suspend fun search(titleMovie: String): MoviesResponse
 }
 
-class MoviesDataSourceImpl(
+class MoviesDataSourceImpl @Inject constructor(
     private val service: MoviesService
 ) : MoviesDataSource {
 
