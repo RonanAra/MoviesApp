@@ -10,62 +10,6 @@
         android:name="com.example.moviesapp.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_bookFragment"
-            app:destination="@id/bookFragment" />
-        <argument
-            android:name="movie"
-            app:argType="com.example.moviesapp.data.model.Movie" />
     </fragment>
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.example.moviesapp.presentation.moviedetails.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
-        <action
-            android:id="@+id/action_detailsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <argument
-            android:name="movie"
-            app:argType="com.example.moviesapp.data.model.Movie" />
-        <action
-            android:id="@+id/action_detailsFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_detailsFragment_self"
-            app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.moviesapp.presentation.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_searchFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-        <argument
-            android:name="movie"
-            app:argType="com.example.moviesapp.data.model.Movie" />
-    </fragment>
-    <fragment
-        android:id="@+id/bookFragment"
-        android:name="com.example.moviesapp.presentation.favorites.FavoritesFragment"
-        android:label="fragment_book"
-        tools:layout="@layout/fragment_favorites" >
-        <action
-            android:id="@+id/action_bookFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-        <action
-            android:id="@+id/action_bookFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <argument
-            android:name="movie"
-            app:argType="com.example.moviesapp.data.model.Movie" />
-    </fragment>
+
 </navigation>
