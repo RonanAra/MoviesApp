@@ -1,7 +1,7 @@
 package com.example.moviesapp.di
 
 import com.example.moviesapp.BuildConfig
-import com.example.moviesapp.data.remote.service.MoviesService
+import com.example.moviesapp.data.service.MoviesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,7 +49,7 @@ object NetworkModule {
         converterFactory: GsonConverterFactory,
     ): MoviesService {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl("")
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
