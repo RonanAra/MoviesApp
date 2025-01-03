@@ -1,10 +1,12 @@
 package com.example.moviesapp.presentation.home
 
 import androidx.lifecycle.ViewModel
-import com.example.moviesapp.data.repository.api.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeViewModel(
-    private val repository: Repository
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+
 ) : ViewModel() {
 
 }
