@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinSerialization)
 }
 
@@ -46,8 +47,8 @@ android {
 }
 
 dependencies {
-    api(libs.bundles.commonLibs)
-    ksp(libs.hiltCompiler)
+    implementation(libs.bundles.commonLibs)
+    ksp(libs.hilt.compiler)
     testImplementation(libs.bundles.androidTest)
     testImplementation(libs.bundles.unitTest)
 }
