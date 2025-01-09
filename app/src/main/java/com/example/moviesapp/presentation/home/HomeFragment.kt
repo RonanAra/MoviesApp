@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.moviesapp.databinding.FragmentHomeBinding
+import com.example.moviesapp.utils.extensions.notImplFeature
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,5 +32,12 @@ class HomeFragment : Fragment() {
             view,
             savedInstanceState
         )
+        setListeners()
+    }
+
+    private fun setListeners() = with(binding) {
+        homeBtnSearch.setOnClickListener { requireContext().notImplFeature() }
+
+        homeBtnFavorite.setOnClickListener { requireContext().notImplFeature() }
     }
 }
