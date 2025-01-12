@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,6 +8,10 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinSerialization)
 }
+
+val apikeyPropertiesFile = rootProject.file("app/apikey.properties")
+val apikeyProperties = Properties()
+apikeyProperties.load(FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -22,6 +29,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", apikeyProperties.getProperty("API_KEY"))
     }
 
     buildTypes {
