@@ -1,6 +1,7 @@
 package com.example.moviesapp.di
 
 import com.example.moviesapp.BuildConfig
+import com.example.moviesapp.data.network.AuthorizationInterceptor
 import com.example.moviesapp.data.service.MoviesService
 import dagger.Module
 import dagger.Provides
@@ -28,10 +29,17 @@ object NetworkModule {
     }
 
     @Provides
+    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
+        return AuthorizationInterceptor(BuildConfig.API_KEY)
+    }
+
+    @Provides
     fun provideOkHttpClient(
+        authorizationInterceptor: AuthorizationInterceptor,
         loggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(authorizationInterceptor)
             .addInterceptor(loggingInterceptor)
             .readTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
