@@ -1,9 +1,9 @@
 package com.example.moviesapp.data.mapper
 
 import com.example.moviesapp.data.models.MovieItemResponse
-import com.example.moviesapp.domain.models.MoviesModel
+import com.example.moviesapp.domain.entity.MoviesModel
 
-fun List<MovieItemResponse>.toModel(): List<MoviesModel> {
+fun List<MovieItemResponse>.mapperToMovieModel(): List<MoviesModel> {
     return this.map { movie ->
         with(movie) {
             MoviesModel(
