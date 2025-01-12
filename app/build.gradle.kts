@@ -49,6 +49,7 @@ android {
 dependencies {
     implementation(libs.bundles.commonLibs)
     ksp(libs.hilt.compiler)
+    ksp(libs.glide.compiler)
     testImplementation(libs.bundles.androidTest)
     testImplementation(libs.bundles.unitTest)
 }
