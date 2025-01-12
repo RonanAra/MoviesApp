@@ -49,7 +49,7 @@ object NetworkModule {
         converterFactory: GsonConverterFactory,
     ): MoviesService {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
