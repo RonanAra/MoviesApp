@@ -38,6 +38,11 @@ class HomeViewModel @Inject constructor(
                         topRatedMovies = movies.first
                     )
                 }
+            },
+            onError = { error ->
+                _uiState.update {
+                    HomeUiState.Error(error.message.orEmpty())
+                }
             }
         )
     }

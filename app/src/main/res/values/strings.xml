@@ -18,5 +18,6 @@
     <string name="nothing_found_label">Nothing Found</string>
     <string name="top_rated_title">Top Rated</string>
     <string name="not_impl_feature_message">Função não Implementada!</string>
+    <string name="error_dialog_title">Erro Desconhecido!</string>
 
 </resources>
