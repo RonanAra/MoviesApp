@@ -27,6 +27,7 @@ retrofit = "2.9.0"
 daggerHilt = "2.54"
 ksp = "2.0.21-1.0.27"
 glide = "4.12.0"
+paging = "3.3.5"
 
 # Unit Test
 archTesting = "2.2.0"
@@ -71,6 +72,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHilt" }
+paging = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 
 [bundles]
 unitTest = ["junit", "archTesting", "coroutinesTest"]
@@ -82,7 +84,8 @@ commonLibs = [
     "coroutinesAndroid", "exifInterface", "gridLayout",
     "gson", "livedata", "loggingInterceptor", "kotlin",
     "material", "navigationFrag", "navigationUi", "navigationCompose",
-    "recyclerView", "retrofit", "viewmodel", "hilt-android", "glide"
+    "recyclerView", "retrofit", "viewmodel", "hilt-android", "glide",
+    "paging"
 ]
 
 [plugins]
