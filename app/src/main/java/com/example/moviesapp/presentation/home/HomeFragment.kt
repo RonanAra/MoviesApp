@@ -15,6 +15,8 @@ import com.example.moviesapp.databinding.FragmentHomeBinding
 import com.example.moviesapp.presentation.home.adapter.HomeMoviesAdapter
 import com.example.moviesapp.utils.extensions.notImplFeature
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -74,6 +76,18 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private suspend fun loadMovies(state: HomeUiState.Movies) = coroutineScope {
+        listOf(
+            state.popularMovies to popularAdapter,
+            state.topRatedMovies to topRatedAdapter,
+            state.recommendedMovies to recommendedAdapter
+        ).forEach { (movies, adapter) ->
+            launch {
+                movies.collectLatest { adapter.submitData(it) }
+            }
+        }
+    }
+
     private fun showErrorDialog(message: String) {
         val builder = AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.error_dialog_title))
@@ -82,12 +96,6 @@ class HomeFragment : Fragment() {
 
         val dialog = builder.create()
         dialog.show()
-    }
-
-    private fun loadMovies(state: HomeUiState.Movies) {
-        popularAdapter.updateMovies(state.popularMovies)
-        recommendedAdapter.updateMovies(state.recommendedMovies)
-        topRatedAdapter.updateMovies(state.topRatedMovies)
     }
 
     private fun setListeners() = with(binding) {

@@ -5,6 +5,7 @@ import java.io.Serializable
 
 data class MoviesResponse(
     val page: Int,
+    @SerializedName("total_pages") val totalPages: Int,
     val results: List<MovieItemResponse>
 ) : Serializable
 

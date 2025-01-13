@@ -1,16 +1,13 @@
 package com.example.moviesapp.presentation.home.adapter
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.domain.entity.MoviesModel
 
 class HomeMoviesAdapter(
     private val onClickItemListener: (MoviesModel) -> Unit
-) : RecyclerView.Adapter<MoviesListVIewHolder>() {
-
-    private val asyncListDiffer = AsyncListDiffer(this, diffCallback)
+) : PagingDataAdapter<MoviesModel, MoviesListVIewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -22,17 +19,11 @@ class HomeMoviesAdapter(
         )
     }
 
-    fun updateMovies(movies: List<MoviesModel>) {
-        asyncListDiffer.submitList(movies)
-    }
-
-    override fun getItemCount() = asyncListDiffer.currentList.size
-
     override fun onBindViewHolder(
         holder: MoviesListVIewHolder,
         position: Int
     ) {
-        holder.bind(asyncListDiffer.currentList[position])
+        getItem(position)?.let { holder.bind(it) }
     }
 
     companion object {

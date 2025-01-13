@@ -2,13 +2,14 @@ package com.example.moviesapp.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.example.moviesapp.domain.repository.MoviesRepository
-import com.example.moviesapp.utils.extensions.launchSuspendFunZip
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,24 +27,18 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadMovies() {
-        viewModelScope.launchSuspendFunZip(
-            firstBlockToRun = { repository.getTopRated(1) },
-            secondBlockToRun = { repository.getPopular(1) },
-            thirdBlockToRun = { repository.getRecommend(1) },
-            onSuccess = { movies ->
-                _uiState.update {
-                    HomeUiState.Movies(
-                        popularMovies = movies.first,
-                        recommendedMovies = movies.third,
-                        topRatedMovies = movies.first
-                    )
-                }
-            },
-            onError = { error ->
-                _uiState.update {
-                    HomeUiState.Error(error.message.orEmpty())
-                }
+        viewModelScope.launch {
+            val popularMoviesFlow = repository.getPopular().cachedIn(viewModelScope)
+            val topRatedMoviesFlow = repository.getTopRated().cachedIn(viewModelScope)
+            val recommendedMoviesFlow = repository.getRecommend().cachedIn(viewModelScope)
+
+            _uiState.update {
+                HomeUiState.Movies(
+                    popularMovies = popularMoviesFlow,
+                    recommendedMovies = recommendedMoviesFlow,
+                    topRatedMovies = topRatedMoviesFlow
+                )
             }
-        )
+        }
     }
 }
